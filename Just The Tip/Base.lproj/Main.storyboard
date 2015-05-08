@@ -119,7 +119,7 @@
                                 </state>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXn-V2-3Ow">
-                                <rect key="frame" x="214" y="115" width="160" height="162"/>
+                                <rect key="frame" x="214" y="96" width="160" height="162"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="UVm-vb-cVT"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="UrH-z6-Gw7"/>

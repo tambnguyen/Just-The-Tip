@@ -16,7 +16,8 @@
 @property (nonatomic,strong) UIColor *RED;
 @property (nonatomic,strong) UIColor *BLACK;
 
-@property (nonatomic,strong) NSArray *pickerData;
+@property (nonatomic,strong) NSArray *arrPercent;
+@property (nonatomic,strong) NSArray *arrPeople;
 
 @property (strong, nonatomic) IBOutlet UIButton *numButton1;
 @property (strong, nonatomic) IBOutlet UIButton *numButton2;
@@ -32,7 +33,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *buttonDel;
 
 @property (strong, nonatomic) IBOutlet UIPickerView *myPicker;
-@property (strong, nonatomic) IBOutlet UILabel *picker;
 
 @property (nonatomic,strong) NSNumber *percent;
 @property (nonatomic,strong) NSNumber *total;

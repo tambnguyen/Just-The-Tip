@@ -37,9 +37,11 @@
     }
     
     //_pickerData = myIntegers;
-    self.pickerData = [[NSArray alloc] initWithObjects: @"Blue", @"Green", @"Orange", @"Purple", @"Red", @"Yellow", nil];
+    self.arrPercent = @[@"Blue",@"Green",@"Orange",@"Purple",@"Red",@"Yellow"];
+    self.arrPeople = @[@"50",@"100",@"150",@"200",@"250", @"1"];
     
     self.myPicker.dataSource = self;
+    self.myPicker.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,18 +97,47 @@
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent: (NSInteger)component
 {
-    return 6;
+    //return self.pickerData.count;
+    //return 6;
+    //return _pickerData[component].count;
+    if(component== 0)
+    {
+        return [self.arrPercent count];
+    }
+    else
+    {
+        return [self.arrPeople count];
+    }
 }
 
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [self.pickerData objectAtIndex:row];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component
-{
-    NSLog(@"Selected Row %ld", (long)row);
+    //return [self.pickerData objectAtIndex:row];
+    //return self.pickerData[component][row];
+    //return _pickerData[row];
+    //return [self.arrPercent objectAtIndex:row];
     
+    if(component == 0)
+    {
+        return [self.arrPercent objectAtIndex:row];
+    }
+    else
+    {
+        return [self.arrPeople objectAtIndex:row];
+    }
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    //NSLog(@"Selected Row %ld", (long)row);
+    if(component == 0)
+    {
+        NSLog([self.arrPercent objectAtIndex:row]);
+    }
+    else
+    {
+        NSLog([self.arrPeople objectAtIndex:row]);
+    }
 }
 
 @end
