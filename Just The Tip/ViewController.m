@@ -30,15 +30,8 @@
     self.BLACK = [UIColor colorWithRed:(0) green:(0) blue:(0) alpha:1];
     [self changeColor];
     
-    NSInteger myIntegers[100];
-    for (NSInteger i = 0; i < 100; i++) {
-        myIntegers[i] = i+1;
-        //_pickerData[i] = i+1;
-    }
-    
-    //_pickerData = myIntegers;
-    self.arrPercent = @[@"Blue",@"Green",@"Orange",@"Purple",@"Red",@"Yellow"];
-    self.arrPeople = @[@"50",@"100",@"150",@"200",@"250", @"1"];
+    self.arrPercent = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30",@"31",@"32",@"33",@"34",@"35",@"36",@"37",@"38",@"39",@"40",@"41",@"42",@"43",@"44",@"45",@"46",@"47",@"48",@"49",@"50"];
+    self.arrPeople = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20"];
     
     self.myPicker.dataSource = self;
     self.myPicker.delegate = self;
@@ -51,41 +44,24 @@
 
 - (void)changeColor
 {
-    self.numButton1.layer.borderWidth = 1.0;
-    self.numButton1.layer.borderColor = self.BLACK.CGColor;
-    
-    self.numButton2.layer.borderWidth = 1.0;
-    self.numButton2.layer.borderColor = self.BLACK.CGColor;
-    
-    self.numButton3.layer.borderWidth = 1.0;
-    self.numButton3.layer.borderColor = self.BLACK.CGColor;
-    
-    self.numButton4.layer.borderWidth = 1.0;
-    self.numButton4.layer.borderColor = self.BLACK.CGColor;
+    [self setBorder:self.numButton1];
+    [self setBorder:self.numButton2];
+    [self setBorder:self.numButton3];
+    [self setBorder:self.numButton4];
+    [self setBorder:self.numButton5];
+    [self setBorder:self.numButton6];
+    [self setBorder:self.numButton7];
+    [self setBorder:self.numButton8];
+    [self setBorder:self.numButton9];
+    [self setBorder:self.numButton0];
+    [self setBorder:self.numButtonDot];
+    [self setBorder:self.buttonDel];
+}
 
-    self.numButton5.layer.borderWidth = 1.0;
-    self.numButton5.layer.borderColor = self.BLACK.CGColor;
-
-    self.numButton6.layer.borderWidth = 1.0;
-    self.numButton6.layer.borderColor = self.BLACK.CGColor;
-
-    self.numButton7.layer.borderWidth = 1.0;
-    self.numButton7.layer.borderColor = self.BLACK.CGColor;
-
-    self.numButton8.layer.borderWidth = 1.0;
-    self.numButton8.layer.borderColor = self.BLACK.CGColor;
-
-    self.numButton9.layer.borderWidth = 1.0;
-    self.numButton9.layer.borderColor = self.BLACK.CGColor;
-
-    self.numButton0.layer.borderWidth = 1.0;
-    self.numButton0.layer.borderColor = self.BLACK.CGColor;
-
-    self.numButtonDot.layer.borderWidth = 1.0;
-    self.numButtonDot.layer.borderColor = self.BLACK.CGColor;
-
-    self.buttonDel.layer.borderWidth = 1.0;
-    self.buttonDel.layer.borderColor = self.BLACK.CGColor;
+- (void) setBorder: (UIButton *) ibutton
+{
+    ibutton.layer.borderWidth = 1.0;
+    ibutton.layer.borderColor = self.BLACK.CGColor;
 }
 
 // returns the number of 'columns' to display.
@@ -97,9 +73,6 @@
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent: (NSInteger)component
 {
-    //return self.pickerData.count;
-    //return 6;
-    //return _pickerData[component].count;
     if(component== 0)
     {
         return [self.arrPercent count];
@@ -112,14 +85,9 @@
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    //return [self.pickerData objectAtIndex:row];
-    //return self.pickerData[component][row];
-    //return _pickerData[row];
-    //return [self.arrPercent objectAtIndex:row];
-    
     if(component == 0)
     {
-        return [self.arrPercent objectAtIndex:row];
+        return [NSString stringWithFormat:@"%@%@", [self.arrPercent objectAtIndex:row], @"%"];
     }
     else
     {
@@ -129,14 +97,15 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    //NSLog(@"Selected Row %ld", (long)row);
     if(component == 0)
     {
-        NSLog([self.arrPercent objectAtIndex:row]);
+        self.percent = [self.arrPercent objectAtIndex:row];
+        NSLog(self.percent);
     }
     else
     {
-        NSLog([self.arrPeople objectAtIndex:row]);
+        self.people = [self.arrPeople objectAtIndex:row];
+        NSLog(self.people);
     }
 }
 
