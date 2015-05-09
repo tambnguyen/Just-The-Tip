@@ -34,16 +34,21 @@
     self.arrPeople = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20"];
     
     self.percent = [NSNumber numberWithInt:15];
-    self.people = [NSNumber numberWithInt:1];
+    self.people = [NSNumber numberWithInt:5];
     self.strSubTotal = @"";
-    
-    [self.myPicker selectRow:self.percent.integerValue inComponent:0 animated:YES];
-    [self.myPicker selectRow:self.people.integerValue inComponent:1 animated:YES];
-    [self.myPicker reloadAllComponents];
+
     
     self.myPicker.dataSource = self;
     self.myPicker.delegate = self;
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.myPicker selectRow:5 inComponent:0 animated:YES];
+    [self.myPicker selectRow:5 inComponent:1 animated:YES];
+    [self.myPicker reloadAllComponents];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -150,7 +155,7 @@
 - (void) calcTotal: (float) subtotal
 {
     self.total = self.strSubTotal.floatValue + self.tip;
-    if (self.button_RoundTotal.isOn)
+    if (self.switch_RoundTotal.isOn)
     {
         self.total = ceilf(self.total);
     }
@@ -160,7 +165,7 @@
 - (void) calcTip: (float) subtotal
 {
     self.tip = subtotal * self.percent.floatValue / 100.0;
-    if ([self.button_RoundTip isOn])
+    if ([self.switch_RoundTip isOn])
     {
         self.tip = (float)ceilf(self.tip);
     }
@@ -216,11 +221,49 @@
 }
 
 - (IBAction)up_RoundTip:(id)sender {
-    
+    if (self.switch_RoundTip.isOn)
+    {
+        self.bRoundTip = TRUE;
+        [self.switch_DontRound setOn:FALSE animated:YES];
+        [self.switch_RoundTotal setOn:FALSE animated:YES];
+        self.bDontRound = FALSE;
+        self.bRoundTotal = FALSE;
+    }
+    else
+    {
+        self.bRoundTip = FALSE;
+    }
     [self updateSubTotal:-3];
 }
 
 - (IBAction)up_RoundTotal:(id)sender {
+    if (self.switch_RoundTotal.isOn)
+    {
+        self.bRoundTotal = TRUE;
+        [self.switch_DontRound setOn:FALSE animated:YES];
+        [self.switch_RoundTip setOn:FALSE animated:YES];
+        self.bDontRound = FALSE;
+        self.bRoundTip = FALSE;
+    }
+    else
+    {
+        self.bRoundTotal = FALSE;
+    }
     [self updateSubTotal:-3];
 }
+
+- (IBAction)up_DontRound:(id)sender {
+    self.bDontRound = TRUE;
+    [self.switch_DontRound setOn:TRUE animated:YES];
+    
+    [self.switch_RoundTip setOn:FALSE animated:YES];
+    self.bRoundTip = FALSE;
+    
+    [self.switch_RoundTotal setOn:FALSE animated:YES];
+    self.bRoundTotal = FALSE;
+
+    [self updateSubTotal:-3];
+}
+
+
 @end

@@ -161,25 +161,46 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="UrH-z6-Gw7"/>
                                 </connections>
                             </pickerView>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$ 0.00" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FdD-w4-ZBU">
+                                <rect key="frame" x="166" y="390" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$ 0.00" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FNY-HV-Yg2">
                                 <rect key="frame" x="27" y="390" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jam-bc-IMY">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jam-bc-IMY">
                                 <rect key="frame" x="31" y="449" width="51" height="31"/>
                                 <connections>
                                     <action selector="up_RoundTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="ck9-if-qfD"/>
                                 </connections>
                             </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3xb-1z-iAX">
-                                <rect key="frame" x="126" y="449" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3xb-1z-iAX">
+                                <rect key="frame" x="142" y="449" width="51" height="31"/>
                                 <connections>
                                     <action selector="up_RoundTotal:" destination="BYZ-38-t0r" eventType="valueChanged" id="XFJ-Oq-zQc"/>
                                 </connections>
                             </switch>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$ 0.00" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FdD-w4-ZBU">
-                                <rect key="frame" x="166" y="390" width="97" height="30"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Rnw-pU-0od">
+                                <rect key="frame" x="245" y="449" width="51" height="31"/>
+                                <connections>
+                                    <action selector="up_DontRound:" destination="BYZ-38-t0r" eventType="valueChanged" id="Quy-b9-h8V"/>
+                                </connections>
+                            </switch>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Round Tip" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="76M-aI-a97">
+                                <rect key="frame" x="7" y="488" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Round Total" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bzu-7G-LWi">
+                                <rect key="frame" x="118" y="488" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Don't Round" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ng9-yS-GtE">
+                                <rect key="frame" x="221" y="488" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -197,8 +218,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="buttonDel" destination="thq-oA-SQZ" id="rWo-dY-1Qx"/>
-                        <outlet property="button_RoundTip" destination="jam-bc-IMY" id="hqN-kb-Cs8"/>
-                        <outlet property="button_RoundTotal" destination="3xb-1z-iAX" id="oyq-se-ue6"/>
                         <outlet property="field_SubTotal" destination="GKp-fu-fkc" id="Evs-47-YqB"/>
                         <outlet property="field_Tip" destination="FNY-HV-Yg2" id="dz6-Vn-dsI"/>
                         <outlet property="field_Total" destination="FdD-w4-ZBU" id="z0F-Bv-8u6"/>
@@ -213,6 +232,9 @@
                         <outlet property="numButton8" destination="8Cr-y8-qW1" id="ESF-Ld-U4U"/>
                         <outlet property="numButton9" destination="uit-u7-DTb" id="zhc-kM-lfj"/>
                         <outlet property="numButtonDot" destination="upH-fB-Rbu" id="PzD-MB-PAm"/>
+                        <outlet property="switch_DontRound" destination="Rnw-pU-0od" id="urB-gh-5BC"/>
+                        <outlet property="switch_RoundTip" destination="jam-bc-IMY" id="wYs-ji-sVh"/>
+                        <outlet property="switch_RoundTotal" destination="3xb-1z-iAX" id="HLR-m2-Z3f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

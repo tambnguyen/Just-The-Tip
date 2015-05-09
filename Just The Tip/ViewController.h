@@ -44,6 +44,7 @@
 
 @property (assign) BOOL bRoundTip;
 @property (assign) BOOL bRoundTotal;
+@property (assign) BOOL bDontRound;
 
 - (IBAction)touchDown_b0:(id)sender;
 - (IBAction)touchDown_b1:(id)sender;
@@ -62,11 +63,13 @@
 @property (strong, nonatomic) IBOutlet UITextField *field_Total;
 @property (strong, nonatomic) IBOutlet UITextField *field_Tip;
 
-@property (strong, nonatomic) IBOutlet UISwitch *button_RoundTip;
-@property (strong, nonatomic) IBOutlet UISwitch *button_RoundTotal;
-
 - (IBAction)up_RoundTip:(id)sender;
 - (IBAction)up_RoundTotal:(id)sender;
+- (IBAction)up_DontRound:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UISwitch *switch_RoundTip;
+@property (strong, nonatomic) IBOutlet UISwitch *switch_RoundTotal;
+@property (strong, nonatomic) IBOutlet UISwitch *switch_DontRound;
 
 
 @end
