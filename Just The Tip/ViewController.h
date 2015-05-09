@@ -34,8 +34,42 @@
 
 @property (strong, nonatomic) IBOutlet UIPickerView *myPicker;
 
-@property (nonatomic,strong) NSNumber *percent;
-@property (nonatomic,strong) NSNumber *total;
-@property (nonatomic,strong) NSNumber *people;
+@property (strong, nonatomic) NSString *strSubTotal;
+
+@property (strong, nonatomic) NSNumber *percent;
+@property (strong, nonatomic) NSNumber *people;
+
+@property (assign) float total;
+@property (assign) float tip;
+
+@property (assign) BOOL bRoundTip;
+@property (assign) BOOL bRoundTotal;
+
+- (IBAction)touchDown_b0:(id)sender;
+- (IBAction)touchDown_b1:(id)sender;
+- (IBAction)touchDown_b2:(id)sender;
+- (IBAction)touchDown_b3:(id)sender;
+- (IBAction)touchDown_b4:(id)sender;
+- (IBAction)touchDown_b5:(id)sender;
+- (IBAction)touchDown_b6:(id)sender;
+- (IBAction)touchDown_b7:(id)sender;
+- (IBAction)touchDown_b8:(id)sender;
+- (IBAction)touchDown_b9:(id)sender;
+- (IBAction)touchDown_dot:(id)sender;
+- (IBAction)touchDown_del:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UITextField *field_SubTotal;
+@property (strong, nonatomic) IBOutlet UITextField *field_Total;
+@property (strong, nonatomic) IBOutlet UITextField *field_Tip;
+
+@property (strong, nonatomic) IBOutlet UISwitch *button_RoundTip;
+@property (strong, nonatomic) IBOutlet UISwitch *button_RoundTotal;
+
+- (IBAction)up_RoundTip:(id)sender;
+- (IBAction)up_RoundTotal:(id)sender;
+
 
 @end
+
+
+

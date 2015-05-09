@@ -33,8 +33,17 @@
     self.arrPercent = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30",@"31",@"32",@"33",@"34",@"35",@"36",@"37",@"38",@"39",@"40",@"41",@"42",@"43",@"44",@"45",@"46",@"47",@"48",@"49",@"50"];
     self.arrPeople = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20"];
     
+    self.percent = [NSNumber numberWithInt:15];
+    self.people = [NSNumber numberWithInt:1];
+    self.strSubTotal = @"";
+    
+    [self.myPicker selectRow:self.percent.integerValue inComponent:0 animated:YES];
+    [self.myPicker selectRow:self.people.integerValue inComponent:1 animated:YES];
+    [self.myPicker reloadAllComponents];
+    
     self.myPicker.dataSource = self;
     self.myPicker.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -100,13 +109,118 @@
     if(component == 0)
     {
         self.percent = [self.arrPercent objectAtIndex:row];
-        NSLog(self.percent);
     }
     else
     {
         self.people = [self.arrPeople objectAtIndex:row];
-        NSLog(self.people);
     }
+    [self updateSubTotal:-3];
 }
 
+- (void) updateSubTotal: (float) value
+{
+    NSString *strTotal = self.field_SubTotal.text.length > 0 ? [self.field_SubTotal.text stringByReplacingOccurrencesOfString:@"$ " withString:@""] : @"";
+    
+    if (value == -1) {  // dot
+        if (strTotal.length > 0) { self.strSubTotal = [NSString stringWithFormat:@"%@%@", strTotal, @"."]; }
+    }
+    else if (value == -2) { // del
+        if (strTotal.length > 0) { self.strSubTotal = [strTotal substringToIndex:[strTotal length]-1]; }
+    }
+    else if (value == -3) {
+        NSLog(@"No op!");
+    }
+    else {
+        if (strTotal.length == 0 && value != 0) {
+            self.strSubTotal = [NSString stringWithFormat:@"%d", (int)value];
+        }
+        else if (strTotal.length == 0 && value == 0) {
+            self.strSubTotal = @"";
+        }
+        else {
+            self.strSubTotal = [NSString stringWithFormat:@"%@%d", strTotal, (int)value];
+        }
+    }
+    self.field_SubTotal.text = [NSString stringWithFormat:@"$ %@", self.strSubTotal];
+    
+    [self calcTip: self.strSubTotal.floatValue];
+    [self calcTotal: self.strSubTotal.floatValue];
+}
+
+- (void) calcTotal: (float) subtotal
+{
+    self.total = self.strSubTotal.floatValue + self.tip;
+    if (self.button_RoundTotal.isOn)
+    {
+        self.total = ceilf(self.total);
+    }
+    self.field_Total.text = [NSString stringWithFormat:@"$ %.2f", self.total];
+}
+
+- (void) calcTip: (float) subtotal
+{
+    self.tip = subtotal * self.percent.floatValue / 100.0;
+    if ([self.button_RoundTip isOn])
+    {
+        self.tip = (float)ceilf(self.tip);
+    }
+    self.field_Tip.text = [NSString stringWithFormat:@"$ %.2f", self.tip];
+}
+
+- (IBAction)touchDown_b0:(id)sender {
+    [self updateSubTotal:0.0];
+}
+
+- (IBAction)touchDown_b1:(id)sender {
+    [self updateSubTotal:1.0];
+}
+
+- (IBAction)touchDown_b2:(id)sender {
+    [self updateSubTotal:2.0];
+}
+
+- (IBAction)touchDown_b3:(id)sender {
+    [self updateSubTotal:3.0];
+}
+
+- (IBAction)touchDown_b4:(id)sender {
+    [self updateSubTotal:4.0];
+}
+
+- (IBAction)touchDown_b5:(id)sender {
+    [self updateSubTotal:5.0];
+}
+
+- (IBAction)touchDown_b6:(id)sender {
+    [self updateSubTotal:6.0];
+}
+
+- (IBAction)touchDown_b7:(id)sender {
+    [self updateSubTotal:7.0];
+}
+
+- (IBAction)touchDown_b8:(id)sender {
+    [self updateSubTotal:8.0];
+}
+
+- (IBAction)touchDown_b9:(id)sender {
+    [self updateSubTotal:9.0];
+}
+
+- (IBAction)touchDown_dot:(id)sender {
+    [self updateSubTotal:-1];
+}
+
+- (IBAction)touchDown_del:(id)sender {
+    [self updateSubTotal:-2];
+}
+
+- (IBAction)up_RoundTip:(id)sender {
+    
+    [self updateSubTotal:-3];
+}
+
+- (IBAction)up_RoundTotal:(id)sender {
+    [self updateSubTotal:-3];
+}
 @end

@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="$0.00" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="GKp-fu-fkc">
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="$ 0.00" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="GKp-fu-fkc">
                                 <rect key="frame" x="16" y="28" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -29,6 +29,9 @@
                                 <state key="normal" title="1">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchDown_b1:" destination="BYZ-38-t0r" eventType="touchDown" id="b2N-Y2-nIM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1J-nQ-w9m">
                                 <rect key="frame" x="79" y="241" width="64" height="64"/>
@@ -37,6 +40,9 @@
                                 <state key="normal" title="2">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchDown_b2:" destination="BYZ-38-t0r" eventType="touchDown" id="DVn-3K-SnW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xpv-5j-ffV">
                                 <rect key="frame" x="142" y="241" width="64" height="64"/>
@@ -45,6 +51,9 @@
                                 <state key="normal" title="3">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchDown_b3:" destination="BYZ-38-t0r" eventType="touchDown" id="TnF-km-M2c"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQq-WG-s9D">
                                 <rect key="frame" x="16" y="178" width="64" height="64"/>
@@ -53,6 +62,9 @@
                                 <state key="normal" title="4">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchDown_b4:" destination="BYZ-38-t0r" eventType="touchDown" id="R53-y0-T19"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6U-ub-xfD">
                                 <rect key="frame" x="79" y="178" width="64" height="64"/>
@@ -61,6 +73,9 @@
                                 <state key="normal" title="5">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchDown_b5:" destination="BYZ-38-t0r" eventType="touchDown" id="jii-y3-uRv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRN-dc-Qsp">
                                 <rect key="frame" x="142" y="178" width="64" height="64"/>
@@ -69,6 +84,9 @@
                                 <state key="normal" title="6">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchDown_b6:" destination="BYZ-38-t0r" eventType="touchDown" id="vQo-LV-MzB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68b-Q9-Tyq">
                                 <rect key="frame" x="16" y="115" width="64" height="64"/>
@@ -77,6 +95,9 @@
                                 <state key="normal" title="7">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchDown_b7:" destination="BYZ-38-t0r" eventType="touchDown" id="lL0-QJ-sHn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Cr-y8-qW1">
                                 <rect key="frame" x="79" y="115" width="64" height="64"/>
@@ -85,6 +106,9 @@
                                 <state key="normal" title="8">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchDown_b8:" destination="BYZ-38-t0r" eventType="touchDown" id="HfO-rl-m4j"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uit-u7-DTb">
                                 <rect key="frame" x="142" y="115" width="64" height="64"/>
@@ -93,6 +117,9 @@
                                 <state key="normal" title="9">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchDown_b9:" destination="BYZ-38-t0r" eventType="touchDown" id="Hhi-dS-onZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upH-fB-Rbu">
                                 <rect key="frame" x="79" y="304" width="64" height="64"/>
@@ -101,6 +128,9 @@
                                 <state key="normal" title=".">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchDown_dot:" destination="BYZ-38-t0r" eventType="touchDown" id="oHr-WO-khJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQu-cB-18x">
                                 <rect key="frame" x="16" y="304" width="64" height="64"/>
@@ -109,6 +139,9 @@
                                 <state key="normal" title="0">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchDown_b0:" destination="BYZ-38-t0r" eventType="touchDown" id="xkn-l1-D7Q"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thq-oA-SQZ">
                                 <rect key="frame" x="142" y="304" width="64" height="64"/>
@@ -117,6 +150,9 @@
                                 <state key="normal" title="DEL">
                                     <color key="titleColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchDown_del:" destination="BYZ-38-t0r" eventType="touchDown" id="hZO-LC-49n"/>
+                                </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXn-V2-3Ow">
                                 <rect key="frame" x="214" y="96" width="160" height="162"/>
@@ -125,6 +161,28 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="UrH-z6-Gw7"/>
                                 </connections>
                             </pickerView>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$ 0.00" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FNY-HV-Yg2">
+                                <rect key="frame" x="27" y="390" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jam-bc-IMY">
+                                <rect key="frame" x="31" y="449" width="51" height="31"/>
+                                <connections>
+                                    <action selector="up_RoundTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="ck9-if-qfD"/>
+                                </connections>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3xb-1z-iAX">
+                                <rect key="frame" x="126" y="449" width="51" height="31"/>
+                                <connections>
+                                    <action selector="up_RoundTotal:" destination="BYZ-38-t0r" eventType="valueChanged" id="XFJ-Oq-zQc"/>
+                                </connections>
+                            </switch>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$ 0.00" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FdD-w4-ZBU">
+                                <rect key="frame" x="166" y="390" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -139,6 +197,11 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="buttonDel" destination="thq-oA-SQZ" id="rWo-dY-1Qx"/>
+                        <outlet property="button_RoundTip" destination="jam-bc-IMY" id="hqN-kb-Cs8"/>
+                        <outlet property="button_RoundTotal" destination="3xb-1z-iAX" id="oyq-se-ue6"/>
+                        <outlet property="field_SubTotal" destination="GKp-fu-fkc" id="Evs-47-YqB"/>
+                        <outlet property="field_Tip" destination="FNY-HV-Yg2" id="dz6-Vn-dsI"/>
+                        <outlet property="field_Total" destination="FdD-w4-ZBU" id="z0F-Bv-8u6"/>
                         <outlet property="numButton0" destination="vQu-cB-18x" id="iCT-HG-dcN"/>
                         <outlet property="numButton1" destination="SVU-DI-RMJ" id="AYW-BN-TU7"/>
                         <outlet property="numButton2" destination="i1J-nQ-w9m" id="Dyu-96-P79"/>
