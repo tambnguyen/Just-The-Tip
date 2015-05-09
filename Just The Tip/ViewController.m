@@ -36,7 +36,6 @@
     self.percent = [NSNumber numberWithInt:15];
     self.people = [NSNumber numberWithInt:5];
     self.strSubTotal = @"";
-
     
     self.myPicker.dataSource = self;
     self.myPicker.delegate = self;
@@ -45,9 +44,10 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.myPicker selectRow:5 inComponent:0 animated:YES];
+    [self.myPicker selectRow:self.percent.integerValue inComponent:0 animated:YES];
+    //[self.myPicker selectRow:5 inComponent:0 animated:YES];
     [self.myPicker selectRow:5 inComponent:1 animated:YES];
-    [self.myPicker reloadAllComponents];
+    //[self.myPicker reloadAllComponents];
 
 }
 
