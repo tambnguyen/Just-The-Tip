@@ -215,30 +215,6 @@
                                     <action selector="up_RoundTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="ck9-if-qfD"/>
                                 </connections>
                             </switch>
-                            <pickerView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXn-V2-3Ow">
-                                <rect key="frame" x="168" y="128" width="432" height="216"/>
-                                <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="224" id="6qX-ZT-fOj"/>
-                                    <constraint firstAttribute="height" constant="224" id="v1O-kQ-Fo8"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="v1O-kQ-Fo8"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="168" y="124" width="232" height="216"/>
-                                    <mask key="constraints">
-                                        <include reference="v1O-kQ-Fo8"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="UVm-vb-cVT"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="UrH-z6-Gw7"/>
-                                </connections>
-                            </pickerView>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FdD-w4-ZBU">
                                 <rect key="frame" x="312" y="348" width="272" height="60"/>
                                 <color key="tintColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
@@ -277,7 +253,7 @@
                                     <rect key="frame" x="16" y="348" width="184" height="60"/>
                                 </variation>
                             </textField>
-                            <switch contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Rnw-pU-0od">
+                            <switch contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Rnw-pU-0od">
                                 <rect key="frame" x="520" y="416" width="51" height="31"/>
                                 <color key="onTintColor" red="1" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <variation key="widthClass=compact" misplaced="YES">
@@ -300,7 +276,7 @@
                                     <rect key="frame" x="304" y="452" width="80" height="21"/>
                                 </variation>
                             </label>
-                            <switch contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3xb-1z-iAX">
+                            <switch contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3xb-1z-iAX">
                                 <rect key="frame" x="241" y="416" width="51" height="31"/>
                                 <color key="onTintColor" red="1" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -328,6 +304,30 @@
                                 <color key="textColor" red="1" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleAspectFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXn-V2-3Ow">
+                                <rect key="frame" x="168" y="124" width="432" height="216"/>
+                                <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="224" id="6qX-ZT-fOj"/>
+                                    <constraint firstAttribute="height" constant="224" id="v1O-kQ-Fo8"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="v1O-kQ-Fo8"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="168" y="124" width="232" height="216"/>
+                                    <mask key="constraints">
+                                        <include reference="v1O-kQ-Fo8"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="UVm-vb-cVT"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="UrH-z6-Gw7"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="0.14901960784313725" green="0.19607843137254902" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -392,15 +392,17 @@
                             <constraint firstItem="eXn-V2-3Ow" firstAttribute="leading" secondItem="gRN-dc-Qsp" secondAttribute="trailing" id="eQd-rl-QPd"/>
                             <constraint firstItem="FNY-HV-Yg2" firstAttribute="top" secondItem="eXn-V2-3Ow" secondAttribute="bottom" constant="4" id="f1G-DE-emm"/>
                             <constraint firstItem="i1J-nQ-w9m" firstAttribute="leading" secondItem="SVU-DI-RMJ" secondAttribute="trailing" id="fBx-s9-Lh8"/>
+                            <constraint firstAttribute="centerX" secondItem="3xb-1z-iAX" secondAttribute="centerX" id="fxM-dd-qum"/>
                             <constraint firstItem="wfr-Wx-yg3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="g6c-lz-2yf"/>
                             <constraint firstItem="uit-u7-DTb" firstAttribute="top" secondItem="gRN-dc-Qsp" secondAttribute="bottom" id="ghz-qz-ubo"/>
                             <constraint firstItem="eXn-V2-3Ow" firstAttribute="leading" secondItem="Xpv-5j-ffV" secondAttribute="trailing" id="i8S-hY-Ue6"/>
                             <constraint firstItem="gRN-dc-Qsp" firstAttribute="leading" secondItem="d6U-ub-xfD" secondAttribute="trailing" id="jLd-PP-Lnf"/>
                             <constraint firstItem="68b-Q9-Tyq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="jwP-2j-nJw"/>
                             <constraint firstItem="8Cr-y8-qW1" firstAttribute="top" secondItem="d6U-ub-xfD" secondAttribute="bottom" id="knn-Ck-lCc"/>
+                            <constraint firstAttribute="centerX" secondItem="6tJ-Ln-J3v" secondAttribute="centerX" id="l7Y-RO-zEs"/>
                             <constraint firstItem="GKp-fu-fkc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="liT-5i-Rrc"/>
                             <constraint firstAttribute="trailing" secondItem="GKp-fu-fkc" secondAttribute="trailing" id="mG4-Vd-rH6"/>
-                            <constraint firstItem="FdD-w4-ZBU" firstAttribute="top" secondItem="eXn-V2-3Ow" secondAttribute="bottom" id="ntf-B7-g0d"/>
+                            <constraint firstItem="FdD-w4-ZBU" firstAttribute="top" secondItem="eXn-V2-3Ow" secondAttribute="bottom" constant="4" id="ntf-B7-g0d"/>
                             <constraint firstItem="FNY-HV-Yg2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="o0Y-WU-EMc"/>
                             <constraint firstItem="fQq-WG-s9D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="oYC-yG-GHs"/>
                             <constraint firstItem="GKp-fu-fkc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ofa-nX-wY7"/>
