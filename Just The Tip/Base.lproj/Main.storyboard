@@ -208,7 +208,7 @@
                                     <action selector="touchDown_del:" destination="BYZ-38-t0r" eventType="touchDown" id="hZO-LC-49n"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jam-bc-IMY">
+                            <switch contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jam-bc-IMY">
                                 <rect key="frame" x="32" y="416" width="51" height="31"/>
                                 <connections>
                                     <action selector="up_RoundTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="ck9-if-qfD"/>
@@ -216,7 +216,7 @@
                             </switch>
                             <pickerView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXn-V2-3Ow">
                                 <rect key="frame" x="168" y="128" width="432" height="216"/>
-                                <color key="backgroundColor" red="0.29019607843137257" green="0.29019607843137257" blue="0.29019607843137257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="224" id="6qX-ZT-fOj"/>
@@ -276,7 +276,7 @@
                                     <rect key="frame" x="16" y="348" width="184" height="60"/>
                                 </variation>
                             </textField>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Rnw-pU-0od">
+                            <switch contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Rnw-pU-0od">
                                 <rect key="frame" x="520" y="416" width="51" height="31"/>
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="320" y="416" width="51" height="31"/>
@@ -298,7 +298,7 @@
                                     <rect key="frame" x="304" y="452" width="80" height="21"/>
                                 </variation>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3xb-1z-iAX">
+                            <switch contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3xb-1z-iAX">
                                 <rect key="frame" x="241" y="416" width="51" height="31"/>
                                 <connections>
                                     <action selector="up_RoundTotal:" destination="BYZ-38-t0r" eventType="valueChanged" id="XFJ-Oq-zQc"/>
@@ -316,6 +316,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.29019607843137257" green="0.29019607843137257" blue="0.29019607843137257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Rnw-pU-0od" secondAttribute="trailing" constant="15" id="0Mn-2I-Rub"/>
                             <constraint firstItem="d6U-ub-xfD" firstAttribute="leading" secondItem="fQq-WG-s9D" secondAttribute="trailing" id="34P-zD-hPg"/>
@@ -503,7 +504,7 @@
                                     <constraint firstAttribute="height" constant="30" id="pfW-RR-evB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="259" y="109" width="97" height="30"/>
                                 </variation>
