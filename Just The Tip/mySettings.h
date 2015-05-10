@@ -21,18 +21,20 @@
 @property (assign) BOOL bDefaultRoundTip;
 @property (assign) BOOL bDefaultRoundTotal;
 @property (assign) BOOL bDefaultDontRound;
+@property (assign) BOOL bRememberLastBill;
 
 @property (strong, nonatomic) IBOutlet UITextField *textDefaultTax;
 @property (strong, nonatomic) IBOutlet UITextField *textDefaultTip;
 @property (strong, nonatomic) IBOutlet UISwitch *switchDefaultRoundTip;
 @property (strong, nonatomic) IBOutlet UISwitch *switchDefaultRoundTotal;
 @property (strong, nonatomic) IBOutlet UISwitch *switchDefaultDontRound;
+@property (strong, nonatomic) IBOutlet UISwitch *switchRememberLastBill;
 
 - (IBAction)up_default_tax:(id)sender;
 - (IBAction)up_default_tip:(id)sender;
 - (IBAction)up_default_roundtip:(id)sender;
 - (IBAction)up_default_roundtotal:(id)sender;
 - (IBAction)up_default_dontround:(id)sender;
-
+- (IBAction)up_default_remember_last_bill:(id)sender;
 
 @end

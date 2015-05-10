@@ -48,6 +48,13 @@
     self.myPicker.dataSource = self;
     self.myPicker.delegate = self;
     
+    if (self.bRememberLastBill)
+    {
+        self.subtotal = [self.userDefaults floatForKey:@"sub_total"];
+        self.strSubTotal = [NSString stringWithFormat: @"%.2f", self.subtotal];
+        [self updateSubTotal:-3];
+    }
+    
     [self animate];
 }
 
@@ -71,33 +78,22 @@
     self.bDefaultRoundTip = [self.userDefaults boolForKey:@"default_roundtip"];
     self.bDefaultDontRound = [self.userDefaults boolForKey:@"default_dontround"];
     self.bDefaultRoundTotal = [self.userDefaults boolForKey:@"default_roundtotal"];
+    self.bRememberLastBill = [self.userDefaults boolForKey:@"remember_last_bill"];
+    self.subtotal = [self.userDefaults floatForKey:@"sub_total"];
     
     self.default_tax = [self.userDefaults boolForKey:@"has_default_tax"] == YES ? [self.userDefaults floatForKey:@"default_tax"] : 8.875;
     self.default_tip = [self.userDefaults boolForKey:@"has_default_tip"] == YES ? [self.userDefaults floatForKey:@"default_tip"] : 15.0;
-}
-
-- (void) setDefaults
-{
-    [self.userDefaults setInteger:self.people.intValue forKey:@"default_people"];
     
-    [self.userDefaults setBool:self.bDefaultRoundTip forKey:@"default_roundtip"];
-    [self.userDefaults setBool:self.bDefaultDontRound forKey:@"default_dontround"];
-    [self.userDefaults setBool:self.bDefaultRoundTotal forKey:@"default_roundtotal"];
-    
-    [self.userDefaults setFloat:self.default_tax forKey:@"default_tax"];
-    [self.userDefaults setBool:YES forKey:@"has_default_tax"];
-    
-    [self.userDefaults setFloat:self.default_tip forKey:@"default_tip"];
-    [self.userDefaults setBool:YES forKey:@"has_default_tip"];
-    
-    [self.userDefaults synchronize];
+    self.bRoundTip = self.bDefaultRoundTip;
+    self.bRoundTotal = self.bDefaultRoundTotal;
+    self.bDontRound = self.bDefaultDontRound;
 }
 
 - (void) animate
 {
-    [self.switch_DontRound setOn:self.bDefaultDontRound animated:YES];
-    [self.switch_RoundTotal setOn:self.bDefaultRoundTotal animated:YES];
-    [self.switch_RoundTip setOn:self.bDefaultRoundTip animated:YES];
+    [self.switch_DontRound setOn:self.bDontRound animated:YES];
+    [self.switch_RoundTotal setOn:self.bRoundTotal animated:YES];
+    [self.switch_RoundTip setOn:self.bRoundTip animated:YES];
     [self.myPicker reloadAllComponents];
 }
 
@@ -108,20 +104,7 @@
 
 - (void) cosmetic: (NSArray *) arrButtons
 {
-    for (id button in arrButtons)
-    {
-        [self setSize: button];
-    }
     
-}
-
-- (void) setSize: (UIButton *) ibutton
-{
-    //ibutton.layer.borderWidth = 1.0;
-    //ibutton.layer.borderColor = self.BLACK.CGColor;
-    CGRect buttonFrame = ibutton.frame;
-    buttonFrame.size = CGSizeMake(64, 64);
-    ibutton.frame = buttonFrame;
 }
 
 // returns the number of 'columns' to display.
@@ -170,7 +153,7 @@
 
 - (void) updateSubTotal: (float) value
 {
-    NSString *strTotal = self.field_SubTotal.text.length > 0 ? [self.field_SubTotal.text stringByReplacingOccurrencesOfString:@"$ " withString:@""] : @"";
+    NSString *strTotal = self.field_SubTotal.text.length > 0 ? [self.field_SubTotal.text stringByReplacingOccurrencesOfString:@"$ " withString:@""] : NULL;
     
     if (value == -1) {  // dot
         if (strTotal.length > 0) { self.strSubTotal = [NSString stringWithFormat:@"%@%@", strTotal, @"."]; }
@@ -194,14 +177,16 @@
     }
     self.field_SubTotal.text = [NSString stringWithFormat:@"$ %@", self.strSubTotal];
     
-    [self calcTip: self.strSubTotal.floatValue];
-    [self calcTotal: self.strSubTotal.floatValue];
+    self.subtotal = self.strSubTotal.floatValue;
+    [self.userDefaults setFloat:self.strSubTotal.floatValue forKey:@"sub_total"];
+    [self calcTip: self.subtotal];
+    [self calcTotal: self.subtotal];
 }
 
 - (void) calcTotal: (float) subtotal
 {
     self.total = (self.strSubTotal.floatValue + self.tip) / self.people.intValue;
-    if (self.switch_RoundTotal.isOn)
+    if (self.bRoundTotal)
     {
         self.total = ceilf(self.total);
     }
@@ -211,7 +196,7 @@
 - (void) calcTip: (float) subtotal
 {
     self.tip = subtotal * self.percent.floatValue / 100.0;
-    if ([self.switch_RoundTip isOn])
+    if (self.bRoundTip)
     {
         self.tip = (float)ceilf(self.tip);
     }
@@ -267,30 +252,30 @@
 }
 
 - (IBAction)up_RoundTip:(id)sender {
-    self.bDefaultRoundTip = self.switch_RoundTip.isOn;
-    self.bDefaultDontRound = !self.bDefaultRoundTip && self.bDefaultRoundTip;
-    self.bDefaultRoundTotal = !self.bDefaultRoundTip && self.bDefaultRoundTip;
+    self.bRoundTip = self.switch_RoundTip.isOn;
+    self.bDontRound = !self.bRoundTip && self.bRoundTip;
+    self.bRoundTotal = !self.bRoundTip && self.bRoundTip;
     
     [self animate];
     [self updateSubTotal:-3];
 }
 
 - (IBAction)up_RoundTotal:(id)sender {
-    self.bDefaultRoundTotal = self.switch_RoundTotal.isOn;
-    self.bDefaultDontRound = !self.bDefaultRoundTotal && self.bDefaultRoundTotal;
-    self.bDefaultRoundTip = !self.bDefaultRoundTotal && self.bDefaultRoundTotal;
+    self.bRoundTotal = self.switch_RoundTotal.isOn;
+    self.bDontRound = !self.bRoundTotal && self.bRoundTotal;
+    self.bRoundTip = !self.bRoundTotal && self.bRoundTotal;
     
     [self animate];
     [self updateSubTotal:-3];
 }
 
 - (IBAction)up_DontRound:(id)sender {
-    self.bDefaultDontRound = TRUE;
-    self.bDefaultRoundTip = FALSE;
-    self.bDefaultRoundTotal = FALSE;
+    self.bDontRound = TRUE;
+    self.bRoundTip = FALSE;
+    self.bRoundTotal = FALSE;
     
-    [self setDefaults];
     [self animate];
+    [self updateSubTotal:-3];
 }
 
 @end

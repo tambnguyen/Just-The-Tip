@@ -48,6 +48,7 @@
     self.bDefaultRoundTip = [self.userDefaults boolForKey:@"default_roundtip"];
     self.bDefaultDontRound = [self.userDefaults boolForKey:@"default_dontround"];
     self.bDefaultRoundTotal = [self.userDefaults boolForKey:@"default_roundtotal"];
+    self.bRememberLastBill = [self.userDefaults boolForKey:@"remember_last_bill"];
     
     self.default_tax = [self.userDefaults boolForKey:@"has_default_tax"] == YES ? [self.userDefaults floatForKey:@"default_tax"] : 8.875;
     self.default_tip = [self.userDefaults boolForKey:@"has_default_tip"] == YES ? [self.userDefaults floatForKey:@"default_tip"] : 15.0;
@@ -58,6 +59,7 @@
     [self.userDefaults setBool:self.bDefaultRoundTip forKey:@"default_roundtip"];
     [self.userDefaults setBool:self.bDefaultDontRound forKey:@"default_dontround"];
     [self.userDefaults setBool:self.bDefaultRoundTotal forKey:@"default_roundtotal"];
+    [self.userDefaults setBool:self.bRememberLastBill forKey:@"remember_last_bill"];
     
     [self.userDefaults setFloat:self.default_tax forKey:@"default_tax"];
     [self.userDefaults setBool:YES forKey:@"has_default_tax"];
@@ -73,6 +75,7 @@
     [self.switchDefaultDontRound setOn:self.bDefaultDontRound animated:YES];
     [self.switchDefaultRoundTotal setOn:self.bDefaultRoundTotal animated:YES];
     [self.switchDefaultRoundTip setOn:self.bDefaultRoundTip animated:YES];
+    [self.switchRememberLastBill setOn:self.bRememberLastBill animated:YES];
 }
 
 - (IBAction)up_default_roundtip:(id)sender {
@@ -102,15 +105,18 @@
     [self animate];
 }
 
+- (IBAction)up_default_remember_last_bill:(id)sender {
+    self.bRememberLastBill = self.switchRememberLastBill.isOn;
+    [self setDefaults];
+}
+
 - (IBAction)up_default_tax:(id)sender {
     self.default_tax = self.textDefaultTax.text.floatValue;
-    
     [self setDefaults];
 }
 
 - (IBAction)up_default_tip:(id)sender {
     self.default_tip = self.textDefaultTip.text.floatValue;
-    
     [self setDefaults];
 }
 

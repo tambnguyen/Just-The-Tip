@@ -46,10 +46,12 @@
 
 @property (assign) float total;
 @property (assign) float tip;
+@property (assign) float subtotal;
 
 @property (assign) BOOL bRoundTip;
 @property (assign) BOOL bRoundTotal;
 @property (assign) BOOL bDontRound;
+@property (assign) BOOL bRememberLastBill;
 
 @property (assign) float default_tip;
 @property (assign) float default_tax;
