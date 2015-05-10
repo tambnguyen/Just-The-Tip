@@ -15,11 +15,6 @@
 
 @implementation ViewController
 
-@synthesize BLUE;
-@synthesize GRAY;
-@synthesize RED;
-@synthesize BLACK;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -33,6 +28,7 @@
     self.RED = [UIColor colorWithRed:(1) green:(59/255.0) blue:(48/255.0) alpha:1];
     self.BLACK = [UIColor colorWithRed:(0) green:(0) blue:(0) alpha:1];
     self.LIGHTBLUE = [UIColor colorWithRed:(90/255) green:(200/255) blue:(250/255) alpha:1];
+    self.ORANGE = [UIColor colorWithRed:(1) green:(149/255) blue:(0) alpha:1];
     
     self.arrButtons = @[self.numButton1, self.numButton2, self.numButton3, self.numButton4, self.numButton5, self.numButton6, self.numButton7, self.numButton8, self.numButton9, self.numButton0, self.numButtonDot, self.buttonDel];
     
@@ -126,16 +122,20 @@
     }
 }
 
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+-(NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
+    NSString *title;
+    NSAttributedString *attString;
     if(component == 0)
     {
-        return [NSString stringWithFormat:@"%@%@", [self.arrPercent objectAtIndex:row], @"%"];
+        title = [NSString stringWithFormat:@"%@%@", [self.arrPercent objectAtIndex:row], @"%"];
     }
     else
     {
-        return [self.arrPeople objectAtIndex:row];
+        title = [self.arrPeople objectAtIndex:row];
     }
+    attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName: self.ORANGE}];
+    return attString;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component

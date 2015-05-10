@@ -18,6 +18,7 @@
 @property (nonatomic,strong) UIColor *RED;
 @property (nonatomic,strong) UIColor *BLACK;
 @property (nonatomic,strong) UIColor *LIGHTBLUE;
+@property (nonatomic,strong) UIColor *ORANGE;
 
 @property (nonatomic,strong) NSArray *arrPercent;
 @property (nonatomic,strong) NSArray *arrPeople;
