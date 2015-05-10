@@ -127,7 +127,7 @@
     {
         title =  [ self.arrPeople objectAtIndex:row ] ;
     }
-    attString =  [ [ NSAttributedString alloc ] initWithString:title attributes:@{NSForegroundColorAttributeName: self.ORANGE} ] ;
+    attString =  [ [ NSAttributedString alloc ] initWithString:title attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} ] ;
     return attString;
 }
 
