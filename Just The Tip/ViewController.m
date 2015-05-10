@@ -5,6 +5,7 @@
 //  Created by Tam Nguyen on 5/7/15.
 //  Copyright  ( c )  2015 Tam Nguyen. All rights reserved.
 //
+//  Color scheme: https://color.adobe.com/1944mustang-color-theme-4817/
 
 #import "ViewController.h"
 #import <QuartzCore/QuartzCore.h>
@@ -16,12 +17,12 @@
 @implementation ViewController
 
 -  ( void ) viewDidLoad {
-     [ super viewDidLoad ] ;
+    [ super viewDidLoad ] ;
     // Do any additional setup after loading the view, typically from a nib.
     
     self.userDefaults =  [ NSUserDefaults standardUserDefaults ] ;
     
-     [ self getDefaults ] ;
+    [ self getDefaults ] ;
     
     self.BLUE =  [ UIColor colorWithRed: ( 0 )  green: ( 122/255.0 )  blue: ( 1 )  alpha:1 ] ;
     self.GRAY =  [ UIColor colorWithRed: ( 142/255.0 )  green: ( 142/255.0 )  blue: ( 147/255.0 )  alpha:1 ] ;
@@ -46,26 +47,39 @@
     {
         self.subtotal =  [ self.userDefaults floatForKey:@"sub_total" ] ;
         self.strSubTotal =  [ NSString stringWithFormat: @"%.2f", self.subtotal ] ;
-         [ self updateSubTotal:-3 ] ;
+        [ self updateSubTotal:-3 ] ;
     }
     
-     [ self animate ] ;
+    // BEGIN ROTATE PICKER
+    /*
+    self.myPicker.showsSelectionIndicator = NO;
+    self.myPicker.backgroundColor = [UIColor clearColor];
+    CGAffineTransform t0 = CGAffineTransformMakeTranslation (0, self.myPicker.bounds.size.height/2);
+    CGAffineTransform s0 = CGAffineTransformMakeScale(0.7, 0.7);
+    CGAffineTransform t1 = CGAffineTransformMakeTranslation (0, -self.myPicker.bounds.size.height/2);
+    self.myPicker.frame = CGRectMake(275, 110, 60, 162);
+    self.myPicker.transform = CGAffineTransformConcat(t0, CGAffineTransformConcat(s0, t1));
+    self.myPicker.transform = CGAffineTransformRotate(self.myPicker.transform, -M_PI/2);
+    [self.view addSubview: self.myPicker];
+     */
+    // END ROTATE PICKER
+    [ self animate ] ;
 }
 
 -  ( void ) viewDidAppear: ( BOOL ) animated
 {
-     [ super viewDidAppear:animated ] ;
-     [ self.myPicker selectRow:self.percent.integerValue-1 inComponent:0 animated:YES ] ;
-     [ self.myPicker selectRow:self.people.integerValue-1 inComponent:1 animated:YES ] ;
+    [ super viewDidAppear:animated ] ;
+    [ self.myPicker selectRow:self.percent.integerValue-1 inComponent:0 animated:YES ] ;
+    [ self.myPicker selectRow:self.people.integerValue-1 inComponent:1 animated:YES ] ;
 }
 
 -  ( void ) viewWillAppear: ( BOOL ) animated
 {
-     [ super viewWillAppear:animated ] ;
-     [ self animate ] ;
+    [ super viewWillAppear:animated ] ;
+    [ self animate ] ;
 }
 
--  ( void )  getDefaults
+-  ( void ) getDefaults
 {
     self.people =  [ NSNumber numberWithInteger: [ self.userDefaults integerForKey:@"default_people" ]  ] ;
     
@@ -83,16 +97,16 @@
     self.bDontRound = self.bDefaultDontRound;
 }
 
--  ( void )  animate
+-  ( void ) animate
 {
-     [ self.switch_DontRound setOn:self.bDontRound animated:YES ] ;
-     [ self.switch_RoundTotal setOn:self.bRoundTotal animated:YES ] ;
-     [ self.switch_RoundTip setOn:self.bRoundTip animated:YES ] ;
-     [ self.myPicker reloadAllComponents ] ;
+    [ self.switch_DontRound setOn:self.bDontRound animated:YES ] ;
+    [ self.switch_RoundTotal setOn:self.bRoundTotal animated:YES ] ;
+    [ self.switch_RoundTip setOn:self.bRoundTip animated:YES ] ;
+    [ self.myPicker reloadAllComponents ] ;
 }
 
 -  ( void ) didReceiveMemoryWarning {
-     [ super didReceiveMemoryWarning ] ;
+    [ super didReceiveMemoryWarning ] ;
     // Dispose of any resources that can be recreated.
 }
 
@@ -107,7 +121,7 @@
 {
     if ( component== 0 ) 
     {
-        return  [ self.arrPercent count ] ;
+         return  [ self.arrPercent count ] ;
     }
     else
     {
@@ -130,10 +144,30 @@
     attString =  [ [ NSAttributedString alloc ] initWithString:title attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} ] ;
     return attString;
 }
-
+/*
+-(UIView *) pickerView: (UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+{
+    CGRect rect = CGRectMake(0, 0, 200, 40);
+    UILabel * label = [[UILabel alloc]initWithFrame:rect];
+    if ( component == 0 )
+    {
+        label.text =  [ NSString stringWithFormat:@"%@%@",  [ self.arrPercent objectAtIndex:row ] , @"%" ] ;
+    }
+    else
+    {
+        label.text =  [ self.arrPeople objectAtIndex:row ] ;
+    }
+    label.backgroundColor = [UIColor clearColor];
+    label.clipsToBounds = YES;
+    label.transform = CGAffineTransformRotate(label.transform, M_PI/2);
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont systemFontOfSize:26];
+    return label;
+}
+*/
 -  ( void ) pickerView: ( UIPickerView * ) pickerView didSelectRow: ( NSInteger ) row inComponent: ( NSInteger ) component
 {
-    if ( component == 0 ) 
+    if ( component == 0 )
     {
         self.percent =  [ self.arrPercent objectAtIndex:row ] ;
     }
@@ -141,7 +175,7 @@
     {
         self.people =  [ self.arrPeople objectAtIndex:row ] ;
     }
-     [ self updateSubTotal:-3 ] ;
+    [ self updateSubTotal:-3 ] ;
 }
 
 -  ( void )  updateSubTotal:  ( float )  value
@@ -168,12 +202,13 @@
             self.strSubTotal =  [ NSString stringWithFormat:@"%@%d", strTotal,  ( int ) value ] ;
         }
     }
-    self.field_SubTotal.text =  [ NSString stringWithFormat:@"$ %@", self.strSubTotal ] ;
+    //self.field_SubTotal.text = [ NSString stringWithFormat:@"$ %@", self.strSubTotal ] ;
+    self.field_SubTotal.text = [ NSString stringWithFormat:@"%@", self.strSubTotal ] ;
     
     self.subtotal = self.strSubTotal.floatValue;
-     [ self.userDefaults setFloat:self.strSubTotal.floatValue forKey:@"sub_total" ] ;
-     [ self calcTip: self.subtotal ] ;
-     [ self calcTotal: self.subtotal ] ;
+    [ self.userDefaults setFloat:self.strSubTotal.floatValue forKey:@"sub_total" ] ;
+    [ self calcTip: self.subtotal ] ;
+    [ self calcTotal: self.subtotal ] ;
 }
 
 -  ( void )  calcTotal:  ( float )  subtotal
@@ -197,51 +232,51 @@
 }
 
 -  ( IBAction ) touchDown_b0: ( id ) sender {
-     [ self updateSubTotal:0.0 ] ;
+    [ self updateSubTotal:0.0 ] ;
 }
 
 -  ( IBAction ) touchDown_b1: ( id ) sender {
-     [ self updateSubTotal:1.0 ] ;
+    [ self updateSubTotal:1.0 ] ;
 }
 
 -  ( IBAction ) touchDown_b2: ( id ) sender {
-     [ self updateSubTotal:2.0 ] ;
+    [ self updateSubTotal:2.0 ] ;
 }
 
 -  ( IBAction ) touchDown_b3: ( id ) sender {
-     [ self updateSubTotal:3.0 ] ;
+    [ self updateSubTotal:3.0 ] ;
 }
 
 -  ( IBAction ) touchDown_b4: ( id ) sender {
-     [ self updateSubTotal:4.0 ] ;
+    [ self updateSubTotal:4.0 ] ;
 }
 
 -  ( IBAction ) touchDown_b5: ( id ) sender {
-     [ self updateSubTotal:5.0 ] ;
+    [ self updateSubTotal:5.0 ] ;
 }
 
 -  ( IBAction ) touchDown_b6: ( id ) sender {
-     [ self updateSubTotal:6.0 ] ;
+    [ self updateSubTotal:6.0 ] ;
 }
 
 -  ( IBAction ) touchDown_b7: ( id ) sender {
-     [ self updateSubTotal:7.0 ] ;
+    [ self updateSubTotal:7.0 ] ;
 }
 
 -  ( IBAction ) touchDown_b8: ( id ) sender {
-     [ self updateSubTotal:8.0 ] ;
+    [ self updateSubTotal:8.0 ] ;
 }
 
 -  ( IBAction ) touchDown_b9: ( id ) sender {
-     [ self updateSubTotal:9.0 ] ;
+    [ self updateSubTotal:9.0 ] ;
 }
 
 -  ( IBAction ) touchDown_dot: ( id ) sender {
-     [ self updateSubTotal:-1 ] ;
+    [ self updateSubTotal:-1 ] ;
 }
 
 -  ( IBAction ) touchDown_del: ( id ) sender {
-     [ self updateSubTotal:-2 ] ;
+    [ self updateSubTotal:-2 ] ;
 }
 
 -  ( IBAction ) up_RoundTip: ( id ) sender {
@@ -249,8 +284,8 @@
     self.bDontRound = !self.bRoundTip && self.bRoundTip;
     self.bRoundTotal = !self.bRoundTip && self.bRoundTip;
     
-     [ self animate ] ;
-     [ self updateSubTotal:-3 ] ;
+    [ self animate ] ;
+    [ self updateSubTotal:-3 ] ;
 }
 
 -  ( IBAction ) up_RoundTotal: ( id ) sender {
@@ -258,8 +293,8 @@
     self.bDontRound = !self.bRoundTotal && self.bRoundTotal;
     self.bRoundTip = !self.bRoundTotal && self.bRoundTotal;
     
-     [ self animate ] ;
-     [ self updateSubTotal:-3 ] ;
+    [ self animate ] ;
+    [ self updateSubTotal:-3 ] ;
 }
 
 -  ( IBAction ) up_DontRound: ( id ) sender {
@@ -267,8 +302,12 @@
     self.bRoundTip = FALSE;
     self.bRoundTotal = FALSE;
     
-     [ self animate ] ;
-     [ self updateSubTotal:-3 ] ;
+    [ self animate ] ;
+    [ self updateSubTotal:-3 ] ;
 }
 
+- (IBAction)up_field_subtotal:(id)sender {
+    self.strSubTotal = self.field_SubTotal.text;
+    [ self updateSubTotal:-3 ] ;
+}
 @end

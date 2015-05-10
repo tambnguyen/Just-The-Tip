@@ -86,6 +86,8 @@
 @property (strong, nonatomic) IBOutlet UISwitch *switch_RoundTotal;
 @property (strong, nonatomic) IBOutlet UISwitch *switch_DontRound;
 
+- (IBAction)up_field_subtotal:(id)sender;
+
 @end
 
 
