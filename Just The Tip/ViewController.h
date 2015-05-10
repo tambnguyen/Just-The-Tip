@@ -11,13 +11,18 @@
 
 @interface ViewController : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate>
 
+@property (nonatomic,strong) NSUserDefaults *userDefaults;
+
 @property (nonatomic,strong) UIColor *BLUE;
 @property (nonatomic,strong) UIColor *GRAY;
 @property (nonatomic,strong) UIColor *RED;
 @property (nonatomic,strong) UIColor *BLACK;
+@property (nonatomic,strong) UIColor *LIGHTBLUE;
 
 @property (nonatomic,strong) NSArray *arrPercent;
 @property (nonatomic,strong) NSArray *arrPeople;
+
+@property (nonatomic,strong) NSArray *arrButtons;
 
 @property (strong, nonatomic) IBOutlet UIButton *numButton1;
 @property (strong, nonatomic) IBOutlet UIButton *numButton2;
@@ -46,6 +51,13 @@
 @property (assign) BOOL bRoundTotal;
 @property (assign) BOOL bDontRound;
 
+@property (assign) float default_tip;
+@property (assign) float default_tax;
+
+@property (assign) BOOL bDefaultRoundTip;
+@property (assign) BOOL bDefaultRoundTotal;
+@property (assign) BOOL bDefaultDontRound;
+
 - (IBAction)touchDown_b0:(id)sender;
 - (IBAction)touchDown_b1:(id)sender;
 - (IBAction)touchDown_b2:(id)sender;
@@ -70,7 +82,6 @@
 @property (strong, nonatomic) IBOutlet UISwitch *switch_RoundTip;
 @property (strong, nonatomic) IBOutlet UISwitch *switch_RoundTotal;
 @property (strong, nonatomic) IBOutlet UISwitch *switch_DontRound;
-
 
 @end
 

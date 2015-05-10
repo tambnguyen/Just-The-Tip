@@ -24,31 +24,81 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    self.userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    [self getDefaults];
+    
     self.BLUE = [UIColor colorWithRed:(0) green:(122/255.0) blue:(1) alpha:1];
     self.GRAY = [UIColor colorWithRed:(142/255.0) green:(142/255.0) blue:(147/255.0) alpha:1];
     self.RED = [UIColor colorWithRed:(1) green:(59/255.0) blue:(48/255.0) alpha:1];
     self.BLACK = [UIColor colorWithRed:(0) green:(0) blue:(0) alpha:1];
-    [self changeColor];
+    self.LIGHTBLUE = [UIColor colorWithRed:(90/255) green:(200/255) blue:(250/255) alpha:1];
+    
+    self.arrButtons = @[self.numButton1, self.numButton2, self.numButton3, self.numButton4, self.numButton5, self.numButton6, self.numButton7, self.numButton8, self.numButton9, self.numButton0, self.numButtonDot, self.buttonDel];
+    
+    [self cosmetic: self.arrButtons];
     
     self.arrPercent = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30",@"31",@"32",@"33",@"34",@"35",@"36",@"37",@"38",@"39",@"40",@"41",@"42",@"43",@"44",@"45",@"46",@"47",@"48",@"49",@"50"];
     self.arrPeople = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20"];
     
-    self.percent = [NSNumber numberWithInt:15];
-    self.people = [NSNumber numberWithInt:5];
+    self.percent = [NSNumber numberWithFloat:self.default_tip];
+    self.people = [NSNumber numberWithInt:1];
     self.strSubTotal = @"";
     
     self.myPicker.dataSource = self;
     self.myPicker.delegate = self;
+    
+    [self animate];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.myPicker selectRow:self.percent.integerValue inComponent:0 animated:YES];
-    //[self.myPicker selectRow:5 inComponent:0 animated:YES];
-    [self.myPicker selectRow:5 inComponent:1 animated:YES];
-    //[self.myPicker reloadAllComponents];
+    [self.myPicker selectRow:self.percent.integerValue-1 inComponent:0 animated:YES];
+    [self.myPicker selectRow:self.people.integerValue-1 inComponent:1 animated:YES];
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self animate];
+}
+
+- (void) getDefaults
+{
+    self.people = [NSNumber numberWithInteger:[self.userDefaults integerForKey:@"default_people"]];
+    
+    self.bDefaultRoundTip = [self.userDefaults boolForKey:@"default_roundtip"];
+    self.bDefaultDontRound = [self.userDefaults boolForKey:@"default_dontround"];
+    self.bDefaultRoundTotal = [self.userDefaults boolForKey:@"default_roundtotal"];
+    
+    self.default_tax = [self.userDefaults boolForKey:@"has_default_tax"] == YES ? [self.userDefaults floatForKey:@"default_tax"] : 8.875;
+    self.default_tip = [self.userDefaults boolForKey:@"has_default_tip"] == YES ? [self.userDefaults floatForKey:@"default_tip"] : 15.0;
+}
+
+- (void) setDefaults
+{
+    [self.userDefaults setInteger:self.people.intValue forKey:@"default_people"];
+    
+    [self.userDefaults setBool:self.bDefaultRoundTip forKey:@"default_roundtip"];
+    [self.userDefaults setBool:self.bDefaultDontRound forKey:@"default_dontround"];
+    [self.userDefaults setBool:self.bDefaultRoundTotal forKey:@"default_roundtotal"];
+    
+    [self.userDefaults setFloat:self.default_tax forKey:@"default_tax"];
+    [self.userDefaults setBool:YES forKey:@"has_default_tax"];
+    
+    [self.userDefaults setFloat:self.default_tip forKey:@"default_tip"];
+    [self.userDefaults setBool:YES forKey:@"has_default_tip"];
+    
+    [self.userDefaults synchronize];
+}
+
+- (void) animate
+{
+    [self.switch_DontRound setOn:self.bDefaultDontRound animated:YES];
+    [self.switch_RoundTotal setOn:self.bDefaultRoundTotal animated:YES];
+    [self.switch_RoundTip setOn:self.bDefaultRoundTip animated:YES];
+    [self.myPicker reloadAllComponents];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,26 +106,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)changeColor
+- (void) cosmetic: (NSArray *) arrButtons
 {
-    [self setBorder:self.numButton1];
-    [self setBorder:self.numButton2];
-    [self setBorder:self.numButton3];
-    [self setBorder:self.numButton4];
-    [self setBorder:self.numButton5];
-    [self setBorder:self.numButton6];
-    [self setBorder:self.numButton7];
-    [self setBorder:self.numButton8];
-    [self setBorder:self.numButton9];
-    [self setBorder:self.numButton0];
-    [self setBorder:self.numButtonDot];
-    [self setBorder:self.buttonDel];
+    for (id button in arrButtons)
+    {
+        [self setSize: button];
+    }
+    
 }
 
-- (void) setBorder: (UIButton *) ibutton
+- (void) setSize: (UIButton *) ibutton
 {
-    ibutton.layer.borderWidth = 1.0;
-    ibutton.layer.borderColor = self.BLACK.CGColor;
+    //ibutton.layer.borderWidth = 1.0;
+    //ibutton.layer.borderColor = self.BLACK.CGColor;
+    CGRect buttonFrame = ibutton.frame;
+    buttonFrame.size = CGSizeMake(64, 64);
+    ibutton.frame = buttonFrame;
 }
 
 // returns the number of 'columns' to display.
@@ -154,7 +200,7 @@
 
 - (void) calcTotal: (float) subtotal
 {
-    self.total = self.strSubTotal.floatValue + self.tip;
+    self.total = (self.strSubTotal.floatValue + self.tip) / self.people.intValue;
     if (self.switch_RoundTotal.isOn)
     {
         self.total = ceilf(self.total);
@@ -221,49 +267,30 @@
 }
 
 - (IBAction)up_RoundTip:(id)sender {
-    if (self.switch_RoundTip.isOn)
-    {
-        self.bRoundTip = TRUE;
-        [self.switch_DontRound setOn:FALSE animated:YES];
-        [self.switch_RoundTotal setOn:FALSE animated:YES];
-        self.bDontRound = FALSE;
-        self.bRoundTotal = FALSE;
-    }
-    else
-    {
-        self.bRoundTip = FALSE;
-    }
+    self.bDefaultRoundTip = self.switch_RoundTip.isOn;
+    self.bDefaultDontRound = !self.bDefaultRoundTip && self.bDefaultRoundTip;
+    self.bDefaultRoundTotal = !self.bDefaultRoundTip && self.bDefaultRoundTip;
+    
+    [self animate];
     [self updateSubTotal:-3];
 }
 
 - (IBAction)up_RoundTotal:(id)sender {
-    if (self.switch_RoundTotal.isOn)
-    {
-        self.bRoundTotal = TRUE;
-        [self.switch_DontRound setOn:FALSE animated:YES];
-        [self.switch_RoundTip setOn:FALSE animated:YES];
-        self.bDontRound = FALSE;
-        self.bRoundTip = FALSE;
-    }
-    else
-    {
-        self.bRoundTotal = FALSE;
-    }
+    self.bDefaultRoundTotal = self.switch_RoundTotal.isOn;
+    self.bDefaultDontRound = !self.bDefaultRoundTotal && self.bDefaultRoundTotal;
+    self.bDefaultRoundTip = !self.bDefaultRoundTotal && self.bDefaultRoundTotal;
+    
+    [self animate];
     [self updateSubTotal:-3];
 }
 
 - (IBAction)up_DontRound:(id)sender {
-    self.bDontRound = TRUE;
-    [self.switch_DontRound setOn:TRUE animated:YES];
+    self.bDefaultDontRound = TRUE;
+    self.bDefaultRoundTip = FALSE;
+    self.bDefaultRoundTotal = FALSE;
     
-    [self.switch_RoundTip setOn:FALSE animated:YES];
-    self.bRoundTip = FALSE;
-    
-    [self.switch_RoundTotal setOn:FALSE animated:YES];
-    self.bRoundTotal = FALSE;
-
-    [self updateSubTotal:-3];
+    [self setDefaults];
+    [self animate];
 }
-
 
 @end
