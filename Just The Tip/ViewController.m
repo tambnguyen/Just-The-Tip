@@ -281,8 +281,8 @@
 
 -  ( IBAction ) up_RoundTip: ( id ) sender {
     self.bRoundTip = self.switch_RoundTip.isOn;
-    self.bDontRound = !self.bRoundTip && self.bRoundTip;
-    self.bRoundTotal = !self.bRoundTip && self.bRoundTip;
+    self.bDontRound = FALSE;
+    self.bRoundTotal = FALSE;
     
     [ self animate ] ;
     [ self updateSubTotal:-3 ] ;
@@ -290,8 +290,8 @@
 
 -  ( IBAction ) up_RoundTotal: ( id ) sender {
     self.bRoundTotal = self.switch_RoundTotal.isOn;
-    self.bDontRound = !self.bRoundTotal && self.bRoundTotal;
-    self.bRoundTip = !self.bRoundTotal && self.bRoundTotal;
+    self.bDontRound = FALSE;
+    self.bRoundTip = FALSE;
     
     [ self animate ] ;
     [ self updateSubTotal:-3 ] ;

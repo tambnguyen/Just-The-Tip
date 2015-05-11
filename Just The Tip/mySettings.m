@@ -85,8 +85,8 @@
 
 -  ( IBAction ) up_default_roundtip: ( id ) sender {
     self.bDefaultRoundTip = self.switchDefaultRoundTip.isOn;
-    self.bDefaultDontRound = !self.bDefaultRoundTip && self.bDefaultRoundTip;
-    self.bDefaultRoundTotal = !self.bDefaultRoundTip && self.bDefaultRoundTip;
+    self.bDefaultDontRound = FALSE;
+    self.bDefaultRoundTotal = FALSE;
 
     [ self setDefaults ] ;
     [ self animate ] ;
@@ -94,15 +94,15 @@
 
 -  ( IBAction ) up_default_roundtotal: ( id ) sender {
     self.bDefaultRoundTotal = self.switchDefaultRoundTotal.isOn;
-    self.bDefaultDontRound = !self.bDefaultRoundTotal && self.bDefaultRoundTotal;
-    self.bDefaultRoundTip = !self.bDefaultRoundTotal && self.bDefaultRoundTotal;
+    self.bDefaultDontRound = FALSE;
+    self.bDefaultRoundTip = FALSE;
 
     [ self setDefaults ] ;
     [ self animate ] ;
 }
 
 -  ( IBAction ) up_default_dontround: ( id ) sender {
-    self.bDefaultDontRound = TRUE;
+    self.bDefaultDontRound = self.switchDefaultRoundTotal.isOn;
     self.bDefaultRoundTip = FALSE;
     self.bDefaultRoundTotal = FALSE;
     
