@@ -45,11 +45,13 @@
         [ self updateSubTotal:-3 ] ;
     }
     
+    // BEGIN ENABLE DONE BUTTON FOR NUMPAD
     UIToolbar * keyboardDoneButtonView = [[UIToolbar alloc] init];
     [keyboardDoneButtonView sizeToFit];
     UIBarButtonItem * doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneClicked:)];
     [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
     self.field_SubTotal.inputAccessoryView = keyboardDoneButtonView;
+    // END ENABLE DONE BUTTON FOR NUMPAD
 
     [ self animate ] ;
 }
@@ -88,8 +90,11 @@
     self.bRememberLastBill =  [ self.userDefaults boolForKey:@"remember_last_bill" ] ;
     self.subtotal =  [ self.userDefaults floatForKey:@"sub_total" ] ;
     
-    self.default_tax =  [ self.userDefaults boolForKey:@"has_default_tax" ]  == YES ?  [ self.userDefaults floatForKey:@"default_tax" ]  : 8.875;
-    self.default_tip =  [ self.userDefaults boolForKey:@"has_default_tip" ]  == YES ?  [ self.userDefaults floatForKey:@"default_tip" ]  : 15.0;
+    self.has_default_tax = [ self.userDefaults boolForKey:@"has_default_tax" ] ;
+    self.has_default_tip = [ self.userDefaults boolForKey:@"has_default_tip" ] ;
+    
+    self.default_tax =  self.has_default_tax ? [ self.userDefaults floatForKey:@"default_tax" ] : 8.875;
+    self.default_tip =  self.has_default_tip ? [ self.userDefaults floatForKey:@"default_tip" ] : 15.0;
     
     self.bRoundTip = self.bDefaultRoundTip;
     self.bRoundTotal = self.bDefaultRoundTotal;
@@ -300,7 +305,7 @@
 -  ( IBAction ) up_DontRound: ( id ) sender {
     self.bDontRound = self.switch_DontRound.isOn;
     self.bRoundTip = FALSE;
-    self.bRoundTotal = FALSE;
+    self.bRoundTotal = !self.switch_DontRound.isOn;
     
     [ self animate ] ;
     [ self updateSubTotal:-3 ] ;

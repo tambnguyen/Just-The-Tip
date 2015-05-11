@@ -20,12 +20,12 @@
     
     self.userDefaults =  [ NSUserDefaults standardUserDefaults ] ;
     
-     [ self getDefaults ] ;
+    [ self getDefaults ] ;
     
     self.textDefaultTax.text =  [ NSString stringWithFormat:@"%.3f", self.default_tax ] ;
     self.textDefaultTip.text =  [ NSString stringWithFormat:@"%.f", self.default_tip ] ;
     
-     [ self animate ] ;
+    [ self animate ] ;
 }
 
 -  ( void ) didReceiveMemoryWarning {
@@ -55,8 +55,11 @@
     self.bDefaultRoundTotal =  [ self.userDefaults boolForKey:@"default_roundtotal" ] ;
     self.bRememberLastBill =  [ self.userDefaults boolForKey:@"remember_last_bill" ] ;
     
-    self.default_tax =  [ self.userDefaults boolForKey:@"has_default_tax" ]  == YES ?  [ self.userDefaults floatForKey:@"default_tax" ]  : 8.875;
-    self.default_tip =  [ self.userDefaults boolForKey:@"has_default_tip" ]  == YES ?  [ self.userDefaults floatForKey:@"default_tip" ]  : 15.0;
+    self.has_default_tax = [ self.userDefaults boolForKey:@"has_default_tax" ] ;
+    self.has_default_tip = [ self.userDefaults boolForKey:@"has_default_tip" ] ;
+    
+    self.default_tax =  self.has_default_tax ? [ self.userDefaults floatForKey:@"default_tax" ] : 8.875;
+    self.default_tip =  self.has_default_tip ? [ self.userDefaults floatForKey:@"default_tip" ] : 15.0;
 }
 
 -  ( void ) setDefaults
@@ -104,7 +107,7 @@
 -  ( IBAction ) up_default_dontround: ( id ) sender {
     self.bDefaultDontRound = self.switchDefaultRoundTotal.isOn;
     self.bDefaultRoundTip = FALSE;
-    self.bDefaultRoundTotal = FALSE;
+    self.bDefaultRoundTotal = !self.switchDefaultRoundTotal.isOn;
     
     [ self setDefaults ] ;
     [ self animate ] ;
