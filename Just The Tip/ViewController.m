@@ -66,6 +66,11 @@
     [ self animate ] ;
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [ self.view endEditing:YES ] ;
+}
+
 -  ( void ) viewDidAppear: ( BOOL ) animated
 {
     [ super viewDidAppear:animated ] ;
