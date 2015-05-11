@@ -81,6 +81,8 @@
 - (IBAction)up_RoundTip:(id)sender;
 - (IBAction)up_RoundTotal:(id)sender;
 - (IBAction)up_DontRound:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *label_Tip;
+@property (strong, nonatomic) IBOutlet UILabel *label_Total;
 
 @property (strong, nonatomic) IBOutlet UISwitch *switch_RoundTip;
 @property (strong, nonatomic) IBOutlet UISwitch *switch_RoundTotal;

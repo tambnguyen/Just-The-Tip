@@ -17,6 +17,8 @@
 
 @property (assign) float default_tip;
 @property (assign) float default_tax;
+@property (assign) BOOL has_default_tip;
+@property (assign) BOOL has_default_tax;
 
 @property (assign) BOOL bDefaultRoundTip;
 @property (assign) BOOL bDefaultRoundTotal;

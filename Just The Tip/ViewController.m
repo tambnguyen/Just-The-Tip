@@ -21,7 +21,6 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     self.userDefaults =  [ NSUserDefaults standardUserDefaults ] ;
-    
     [ self getDefaults ] ;
     
     self.BLUE =  [ UIColor colorWithRed: ( 0 )  green: ( 122/255.0 )  blue: ( 1 )  alpha:1 ] ;
@@ -36,10 +35,6 @@
     self.arrPercent = @ [ @"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30",@"31",@"32",@"33",@"34",@"35",@"36",@"37",@"38",@"39",@"40",@"41",@"42",@"43",@"44",@"45",@"46",@"47",@"48",@"49",@"50" ] ;
     self.arrPeople = @ [ @"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20" ] ;
     
-    self.percent =  [ NSNumber numberWithFloat:self.default_tip ] ;
-    self.people =  [ NSNumber numberWithInt:1 ] ;
-    self.strSubTotal = @"";
-    
     self.myPicker.dataSource = self;
     self.myPicker.delegate = self;
     
@@ -50,32 +45,31 @@
         [ self updateSubTotal:-3 ] ;
     }
     
-    // BEGIN ROTATE PICKER
-    /*
-    self.myPicker.showsSelectionIndicator = NO;
-    self.myPicker.backgroundColor = [UIColor clearColor];
-    CGAffineTransform t0 = CGAffineTransformMakeTranslation (0, self.myPicker.bounds.size.height/2);
-    CGAffineTransform s0 = CGAffineTransformMakeScale(0.7, 0.7);
-    CGAffineTransform t1 = CGAffineTransformMakeTranslation (0, -self.myPicker.bounds.size.height/2);
-    self.myPicker.frame = CGRectMake(275, 110, 60, 162);
-    self.myPicker.transform = CGAffineTransformConcat(t0, CGAffineTransformConcat(s0, t1));
-    self.myPicker.transform = CGAffineTransformRotate(self.myPicker.transform, -M_PI/2);
-    [self.view addSubview: self.myPicker];
-     */
-    // END ROTATE PICKER
+    UIToolbar * keyboardDoneButtonView = [[UIToolbar alloc] init];
+    [keyboardDoneButtonView sizeToFit];
+    UIBarButtonItem * doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneClicked:)];
+    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
+    self.field_SubTotal.inputAccessoryView = keyboardDoneButtonView;
+
     [ self animate ] ;
+}
+
+- (IBAction)doneClicked:(id)sender
+{
+    [self.view endEditing:YES];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [ self.view endEditing:YES ] ;
+    [ self.field_SubTotal resignFirstResponder ] ;
 }
 
 -  ( void ) viewDidAppear: ( BOOL ) animated
 {
     [ super viewDidAppear:animated ] ;
-    [ self.myPicker selectRow:self.percent.integerValue-1 inComponent:0 animated:YES ] ;
-    [ self.myPicker selectRow:self.people.integerValue-1 inComponent:1 animated:YES ] ;
+    [ self.myPicker selectRow:self.people.integerValue-1 inComponent:0 animated:YES ] ;
+    [ self.myPicker selectRow:self.percent.integerValue-1 inComponent:1 animated:YES ] ;
 }
 
 -  ( void ) viewWillAppear: ( BOOL ) animated
@@ -100,6 +94,11 @@
     self.bRoundTip = self.bDefaultRoundTip;
     self.bRoundTotal = self.bDefaultRoundTotal;
     self.bDontRound = self.bDefaultDontRound;
+    
+    self.percent =  [ NSNumber numberWithFloat:self.default_tip ] ;
+    self.tip = self.default_tip;
+    
+    self.strSubTotal = @"";
 }
 
 -  ( void ) animate
@@ -124,7 +123,7 @@
 // returns the # of rows in each component..
 -  ( NSInteger ) pickerView: ( UIPickerView * ) pickerView numberOfRowsInComponent:  ( NSInteger ) component
 {
-    if ( component== 0 ) 
+    if ( component == 1 )
     {
          return  [ self.arrPercent count ] ;
     }
@@ -138,54 +137,35 @@
 {
     NSString *title;
     NSAttributedString *attString;
-    if ( component == 0 ) 
+    if ( component == 0 )
     {
-        title =  [ NSString stringWithFormat:@"%@%@",  [ self.arrPercent objectAtIndex:row ] , @"%" ] ;
+        title =  [ self.arrPeople objectAtIndex:row ] ;
     }
     else
     {
-        title =  [ self.arrPeople objectAtIndex:row ] ;
+        title =  [ NSString stringWithFormat:@"%@%@",  [ self.arrPercent objectAtIndex:row ] , @"%" ] ;
     }
     attString =  [ [ NSAttributedString alloc ] initWithString:title attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} ] ;
     return attString;
 }
-/*
--(UIView *) pickerView: (UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
-{
-    CGRect rect = CGRectMake(0, 0, 200, 40);
-    UILabel * label = [[UILabel alloc]initWithFrame:rect];
-    if ( component == 0 )
-    {
-        label.text =  [ NSString stringWithFormat:@"%@%@",  [ self.arrPercent objectAtIndex:row ] , @"%" ] ;
-    }
-    else
-    {
-        label.text =  [ self.arrPeople objectAtIndex:row ] ;
-    }
-    label.backgroundColor = [UIColor clearColor];
-    label.clipsToBounds = YES;
-    label.transform = CGAffineTransformRotate(label.transform, M_PI/2);
-    label.textColor = [UIColor whiteColor];
-    label.font = [UIFont systemFontOfSize:26];
-    return label;
-}
-*/
+
 -  ( void ) pickerView: ( UIPickerView * ) pickerView didSelectRow: ( NSInteger ) row inComponent: ( NSInteger ) component
 {
     if ( component == 0 )
     {
-        self.percent =  [ self.arrPercent objectAtIndex:row ] ;
+        self.people =  [ self.arrPeople objectAtIndex:row ] ;
     }
     else
     {
-        self.people =  [ self.arrPeople objectAtIndex:row ] ;
+        self.percent =  [ self.arrPercent objectAtIndex:row ] ;
     }
     [ self updateSubTotal:-3 ] ;
 }
 
 -  ( void )  updateSubTotal:  ( float )  value
 {
-    NSString *strTotal = self.field_SubTotal.text.length > 0 ?  [ self.field_SubTotal.text stringByReplacingOccurrencesOfString:@"$ " withString:@"" ]  : NULL;
+    //NSString *strTotal = self.field_SubTotal.text.length > 0 ?  [ self.field_SubTotal.text stringByReplacingOccurrencesOfString:@"$ " withString:@"" ]  : NULL;
+    NSString * strTotal = self.strSubTotal;
     
     if  ( value == -1 )  {  // dot
         if  ( strTotal.length > 0 )  { self.strSubTotal =  [ NSString stringWithFormat:@"%@%@", strTotal, @"." ] ; }
@@ -207,33 +187,48 @@
             self.strSubTotal =  [ NSString stringWithFormat:@"%@%d", strTotal,  ( int ) value ] ;
         }
     }
-    //self.field_SubTotal.text = [ NSString stringWithFormat:@"$ %@", self.strSubTotal ] ;
     self.field_SubTotal.text = [ NSString stringWithFormat:@"%@", self.strSubTotal ] ;
     
     self.subtotal = self.strSubTotal.floatValue;
     [ self.userDefaults setFloat:self.strSubTotal.floatValue forKey:@"sub_total" ] ;
     [ self calcTip: self.subtotal ] ;
     [ self calcTotal: self.subtotal ] ;
+    [ self updateFields ] ;
 }
 
--  ( void )  calcTotal:  ( float )  subtotal
+-  ( void )  calcTotal: ( float ) subtotal
 {
-    self.total =  ( self.strSubTotal.floatValue + self.tip )  / self.people.intValue;
+    self.total =  ( self.subtotal + self.tip ) / self.people.intValue;
     if  ( self.bRoundTotal ) 
     {
         self.total = ceilf ( self.total ) ;
+        self.tip = self.total - ( self.subtotal / self.people.intValue ) ;
     }
-    self.field_Total.text =  [ NSString stringWithFormat:@"$ %.2f", self.total ] ;
 }
 
--  ( void )  calcTip:  ( float )  subtotal
+-  ( void )  calcTip: ( float ) subtotal
 {
     self.tip = subtotal * self.percent.floatValue / 100.0;
     if  ( self.bRoundTip ) 
     {
-        self.tip =  ( float ) ceilf ( self.tip ) ;
+        self.tip =  ( float ) ceilf ( self.tip / self.people.intValue ) ;
     }
+}
+
+- ( void ) updateFields
+{
     self.field_Tip.text =  [ NSString stringWithFormat:@"$ %.2f", self.tip ] ;
+    self.field_Total.text = [ NSString stringWithFormat:@"$ %.2f", self.total ] ;
+    if ( self.people.intValue > 1 )
+    {
+        self.label_Tip.text = [NSString stringWithFormat:@"Tip (%.2f)", self.tip * self.people.intValue ];
+        self.label_Total.text = [NSString stringWithFormat:@"Total (%.2f)", self.total * self.people.intValue ];
+    }
+    else
+    {
+        self.label_Tip.text = @"Tip";
+        self.label_Total.text = @"Total";
+    }
 }
 
 -  ( IBAction ) touchDown_b0: ( id ) sender {
@@ -303,7 +298,7 @@
 }
 
 -  ( IBAction ) up_DontRound: ( id ) sender {
-    self.bDontRound = TRUE;
+    self.bDontRound = self.switch_DontRound.isOn;
     self.bRoundTip = FALSE;
     self.bRoundTotal = FALSE;
     
@@ -312,7 +307,21 @@
 }
 
 - (IBAction)up_field_subtotal:(id)sender {
-    self.strSubTotal = self.field_SubTotal.text;
+    NSString * subtotal = [ self.field_SubTotal.text stringByReplacingOccurrencesOfString:@".." withString:@"." ] ;
+    NSString * pattern1 = @"(\\d*[.])?\\d+";
+    NSString * pattern2 = @"\\d*[.]";
+    NSPredicate * myTest1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern1];
+    NSPredicate * myTest2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern2];
+    
+    if ( [ myTest1 evaluateWithObject: subtotal ] || [ myTest2 evaluateWithObject: subtotal ] || [ subtotal length ] == 0 )
+    {
+        self.strSubTotal = subtotal;
+    }
+    else
+    {
+        self.field_SubTotal.text = self.strSubTotal;
+    }
+    
     [ self updateSubTotal:-3 ] ;
 }
 @end

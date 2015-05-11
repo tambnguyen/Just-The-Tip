@@ -67,10 +67,10 @@
      [ self.userDefaults setBool:self.bRememberLastBill forKey:@"remember_last_bill" ] ;
     
      [ self.userDefaults setFloat:self.default_tax forKey:@"default_tax" ] ;
-     [ self.userDefaults setBool:YES forKey:@"has_default_tax" ] ;
+     [ self.userDefaults setBool:self.has_default_tax forKey:@"has_default_tax" ] ;
     
      [ self.userDefaults setFloat:self.default_tip forKey:@"default_tip" ] ;
-     [ self.userDefaults setBool:YES forKey:@"has_default_tip" ] ;
+     [ self.userDefaults setBool:self.has_default_tip forKey:@"has_default_tip" ] ;
     
      [ self.userDefaults synchronize ] ;
 }
@@ -88,8 +88,8 @@
     self.bDefaultDontRound = !self.bDefaultRoundTip && self.bDefaultRoundTip;
     self.bDefaultRoundTotal = !self.bDefaultRoundTip && self.bDefaultRoundTip;
 
-     [ self setDefaults ] ;
-     [ self animate ] ;
+    [ self setDefaults ] ;
+    [ self animate ] ;
 }
 
 -  ( IBAction ) up_default_roundtotal: ( id ) sender {
@@ -97,8 +97,8 @@
     self.bDefaultDontRound = !self.bDefaultRoundTotal && self.bDefaultRoundTotal;
     self.bDefaultRoundTip = !self.bDefaultRoundTotal && self.bDefaultRoundTotal;
 
-     [ self setDefaults ] ;
-     [ self animate ] ;
+    [ self setDefaults ] ;
+    [ self animate ] ;
 }
 
 -  ( IBAction ) up_default_dontround: ( id ) sender {
@@ -106,23 +106,53 @@
     self.bDefaultRoundTip = FALSE;
     self.bDefaultRoundTotal = FALSE;
     
-     [ self setDefaults ] ;
-     [ self animate ] ;
+    [ self setDefaults ] ;
+    [ self animate ] ;
 }
 
 -  ( IBAction ) up_default_remember_last_bill: ( id ) sender {
     self.bRememberLastBill = self.switchRememberLastBill.isOn;
-     [ self setDefaults ] ;
+    [ self setDefaults ] ;
 }
 
 -  ( IBAction ) up_default_tax: ( id ) sender {
-    self.default_tax = self.textDefaultTax.text.floatValue;
-     [ self setDefaults ] ;
+    NSString * tax = [ self.textDefaultTax.text stringByReplacingOccurrencesOfString:@".." withString:@"." ] ;
+    NSString * pattern1 = @"(\\d*[.])?\\d+";
+    NSString * pattern2 = @"\\d*[.]";
+    NSPredicate * myTest1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern1];
+    NSPredicate * myTest2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern2];
+    
+    if ( [ myTest1 evaluateWithObject: tax ] || [ myTest2 evaluateWithObject: tax ] || [ tax length ] == 0 )
+    {
+        self.default_tax = tax.floatValue;
+    }
+    else
+    {
+        self.textDefaultTax.text = [ NSString stringWithFormat:@"%.3f", self.default_tax ] ;
+    }
+    
+    if ( tax.length == 0 )
+    {
+        self.has_default_tax = FALSE;
+    }
+    else
+    {
+        self.has_default_tax = TRUE;
+    }
+    [ self setDefaults ] ;
 }
 
 -  ( IBAction ) up_default_tip: ( id ) sender {
     self.default_tip = self.textDefaultTip.text.floatValue;
-     [ self setDefaults ] ;
+    if ( self.textDefaultTip.text.length == 0 )
+    {
+        self.has_default_tip = FALSE;
+    }
+    else
+    {
+        self.has_default_tip = TRUE;
+    }
+    [ self setDefaults ] ;
 }
 
 @end
