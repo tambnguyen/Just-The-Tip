@@ -15,6 +15,7 @@
 		234DC8B71AFBF05A006A498A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 234DC8B51AFBF05A006A498A /* LaunchScreen.xib */; };
 		234DC8C31AFBF05B006A498A /* Just_The_TipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 234DC8C21AFBF05B006A498A /* Just_The_TipTests.m */; };
 		23B0FA941AFE8DC600B07044 /* mySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B0FA931AFE8DC600B07044 /* mySettings.m */; };
+		23B5CEBC1B00328D00DCB927 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B5CEBB1B00328D00DCB927 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		234DC8C21AFBF05B006A498A /* Just_The_TipTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Just_The_TipTests.m; sourceTree = "<group>"; };
 		23B0FA921AFE8DC600B07044 /* mySettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mySettings.h; sourceTree = "<group>"; };
 		23B0FA931AFE8DC600B07044 /* mySettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mySettings.m; sourceTree = "<group>"; };
+		23B5CEB81B002F1600DCB927 /* Just The Tip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Just The Tip.entitlements"; sourceTree = "<group>"; };
+		23B5CEBB1B00328D00DCB927 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23B5CEBC1B00328D00DCB927 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +70,7 @@
 		234DC89A1AFBF05A006A498A = {
 			isa = PBXGroup;
 			children = (
+				23B5CEBB1B00328D00DCB927 /* CloudKit.framework */,
 				234DC8A51AFBF05A006A498A /* Just The Tip */,
 				234DC8BF1AFBF05A006A498A /* Just The TipTests */,
 				234DC8A41AFBF05A006A498A /* Products */,
@@ -84,6 +89,7 @@
 		234DC8A51AFBF05A006A498A /* Just The Tip */ = {
 			isa = PBXGroup;
 			children = (
+				23B5CEB81B002F1600DCB927 /* Just The Tip.entitlements */,
 				234DC8AA1AFBF05A006A498A /* AppDelegate.h */,
 				234DC8AB1AFBF05A006A498A /* AppDelegate.m */,
 				234DC8AD1AFBF05A006A498A /* ViewController.h */,
@@ -173,6 +179,12 @@
 				TargetAttributes = {
 					234DC8A21AFBF05A006A498A = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 39Q592Q9J9;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					234DC8BB1AFBF05A006A498A = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -355,9 +367,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Just The Tip/Just The Tip.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Just The Tip/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -365,9 +382,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Just The Tip/Just The Tip.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Just The Tip/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
