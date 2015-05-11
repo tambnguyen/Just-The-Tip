@@ -80,7 +80,7 @@
 
 -  ( void ) getDefaults
 {
-    self.people =  [ NSNumber numberWithInteger: [ self.userDefaults integerForKey:@"default_people" ]  ] ;
+    self.people = [ NSNumber numberWithInteger: [ self.userDefaults integerForKey:@"default_people" ] ? [ self.userDefaults integerForKey:@"default_people" ] : 1 ] ;
     
     self.bDefaultRoundTip =  [ self.userDefaults boolForKey:@"default_roundtip" ] ;
     self.bDefaultDontRound =  [ self.userDefaults boolForKey:@"default_dontround" ] ;
