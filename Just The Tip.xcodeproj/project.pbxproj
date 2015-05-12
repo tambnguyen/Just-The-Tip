@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2302D1001B01A71A00314F05 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2302D0FF1B01A71A00314F05 /* NotificationCenter.framework */; };
+		2302D1061B01A71A00314F05 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2302D1051B01A71A00314F05 /* TodayViewController.m */; };
+		2302D1081B01A71A00314F05 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2302D1071B01A71A00314F05 /* MainInterface.storyboard */; };
+		2302D10B1B01A71A00314F05 /* myWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2302D0FD1B01A71A00314F05 /* myWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		234DC8A91AFBF05A006A498A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 234DC8A81AFBF05A006A498A /* main.m */; };
 		234DC8AC1AFBF05A006A498A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 234DC8AB1AFBF05A006A498A /* AppDelegate.m */; };
 		234DC8AF1AFBF05A006A498A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 234DC8AE1AFBF05A006A498A /* ViewController.m */; };
@@ -18,6 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2302D1091B01A71A00314F05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 234DC89B1AFBF05A006A498A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2302D0FC1B01A71A00314F05;
+			remoteInfo = myWidget;
+		};
 		234DC8BD1AFBF05A006A498A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 234DC89B1AFBF05A006A498A /* Project object */;
@@ -27,7 +38,28 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2302D10F1B01A71A00314F05 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2302D10B1B01A71A00314F05 /* myWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2302D0FD1B01A71A00314F05 /* myWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = myWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2302D0FF1B01A71A00314F05 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		2302D1031B01A71A00314F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2302D1041B01A71A00314F05 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		2302D1051B01A71A00314F05 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		2302D1071B01A71A00314F05 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		2321BBEF1B01C041006CA483 /* myWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = myWidget.entitlements; sourceTree = "<group>"; };
 		234DC8A31AFBF05A006A498A /* Just The Tip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Just The Tip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		234DC8A71AFBF05A006A498A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		234DC8A81AFBF05A006A498A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -47,6 +79,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2302D0FA1B01A71A00314F05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2302D1001B01A71A00314F05 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		234DC8A01AFBF05A006A498A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -64,11 +104,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2302D0FE1B01A71A00314F05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2302D0FF1B01A71A00314F05 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2302D1011B01A71A00314F05 /* myWidget */ = {
+			isa = PBXGroup;
+			children = (
+				2321BBEF1B01C041006CA483 /* myWidget.entitlements */,
+				2302D1041B01A71A00314F05 /* TodayViewController.h */,
+				2302D1051B01A71A00314F05 /* TodayViewController.m */,
+				2302D1071B01A71A00314F05 /* MainInterface.storyboard */,
+				2302D1021B01A71A00314F05 /* Supporting Files */,
+			);
+			path = myWidget;
+			sourceTree = "<group>";
+		};
+		2302D1021B01A71A00314F05 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2302D1031B01A71A00314F05 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		234DC89A1AFBF05A006A498A = {
 			isa = PBXGroup;
 			children = (
 				234DC8A51AFBF05A006A498A /* Just The Tip */,
 				234DC8BF1AFBF05A006A498A /* Just The TipTests */,
+				2302D1011B01A71A00314F05 /* myWidget */,
+				2302D0FE1B01A71A00314F05 /* Frameworks */,
 				234DC8A41AFBF05A006A498A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,6 +148,7 @@
 			children = (
 				234DC8A31AFBF05A006A498A /* Just The Tip.app */,
 				234DC8BC1AFBF05A006A498A /* Just The TipTests.xctest */,
+				2302D0FD1B01A71A00314F05 /* myWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,6 +200,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2302D0FC1B01A71A00314F05 /* myWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2302D10E1B01A71A00314F05 /* Build configuration list for PBXNativeTarget "myWidget" */;
+			buildPhases = (
+				2302D0F91B01A71A00314F05 /* Sources */,
+				2302D0FA1B01A71A00314F05 /* Frameworks */,
+				2302D0FB1B01A71A00314F05 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = myWidget;
+			productName = myWidget;
+			productReference = 2302D0FD1B01A71A00314F05 /* myWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		234DC8A21AFBF05A006A498A /* Just The Tip */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 234DC8C61AFBF05B006A498A /* Build configuration list for PBXNativeTarget "Just The Tip" */;
@@ -136,10 +224,12 @@
 				234DC89F1AFBF05A006A498A /* Sources */,
 				234DC8A01AFBF05A006A498A /* Frameworks */,
 				234DC8A11AFBF05A006A498A /* Resources */,
+				2302D10F1B01A71A00314F05 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2302D10A1B01A71A00314F05 /* PBXTargetDependency */,
 			);
 			name = "Just The Tip";
 			productName = "Just The Tip";
@@ -173,10 +263,22 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Tam Nguyen";
 				TargetAttributes = {
+					2302D0FC1B01A71A00314F05 = {
+						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 39Q592Q9J9;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					234DC8A21AFBF05A006A498A = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = 39Q592Q9J9;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 0;
 							};
@@ -203,11 +305,20 @@
 			targets = (
 				234DC8A21AFBF05A006A498A /* Just The Tip */,
 				234DC8BB1AFBF05A006A498A /* Just The TipTests */,
+				2302D0FC1B01A71A00314F05 /* myWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2302D0FB1B01A71A00314F05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2302D1081B01A71A00314F05 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		234DC8A11AFBF05A006A498A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -228,6 +339,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2302D0F91B01A71A00314F05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2302D1061B01A71A00314F05 /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		234DC89F1AFBF05A006A498A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,6 +369,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2302D10A1B01A71A00314F05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2302D0FC1B01A71A00314F05 /* myWidget */;
+			targetProxy = 2302D1091B01A71A00314F05 /* PBXContainerItemProxy */;
+		};
 		234DC8BE1AFBF05A006A498A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 234DC8A21AFBF05A006A498A /* Just The Tip */;
@@ -277,6 +401,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2302D10C1B01A71A00314F05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = myWidget/myWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = myWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2302D10D1B01A71A00314F05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = myWidget/myWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = myWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		234DC8C41AFBF05B006A498A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -363,6 +519,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Just The Tip/Just The Tip.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Just The Tip/Info.plist";
@@ -377,6 +534,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Just The Tip/Just The Tip.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Just The Tip/Info.plist";
@@ -424,6 +582,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2302D10E1B01A71A00314F05 /* Build configuration list for PBXNativeTarget "myWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2302D10C1B01A71A00314F05 /* Debug */,
+				2302D10D1B01A71A00314F05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		234DC89E1AFBF05A006A498A /* Build configuration list for PBXProject "Just The Tip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -18,14 +18,29 @@
      [ super viewDidLoad ] ;
     // Do any additional setup after loading the view.
     
-    self.userDefaults =  [ NSUserDefaults standardUserDefaults ] ;
+    //self.userDefaults =  [ NSUserDefaults standardUserDefaults ] ;
+    self.userDefaults =  [[NSUserDefaults alloc] initWithSuiteName:@"group.Just-The-Tip"] ;
     
     [ self getDefaults ] ;
     
     self.textDefaultTax.text =  [ NSString stringWithFormat:@"%.3f", self.default_tax ] ;
     self.textDefaultTip.text =  [ NSString stringWithFormat:@"%.f", self.default_tip ] ;
     
+    // BEGIN ENABLE DONE BUTTON FOR NUMPAD
+    UIToolbar * keyboardDoneButtonView = [[UIToolbar alloc] init];
+    [keyboardDoneButtonView sizeToFit];
+    UIBarButtonItem * doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneClicked:)];
+    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
+    self.textDefaultTax.inputAccessoryView = keyboardDoneButtonView;
+    self.textDefaultTip.inputAccessoryView = keyboardDoneButtonView;
+    // END ENABLE DONE BUTTON FOR NUMPAD
+    
     [ self animate ] ;
+}
+
+- (IBAction)doneClicked:(id)sender
+{
+    [self.view endEditing:YES];
 }
 
 -  ( void ) didReceiveMemoryWarning {

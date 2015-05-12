@@ -20,7 +20,8 @@
     [ super viewDidLoad ] ;
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.userDefaults =  [ NSUserDefaults standardUserDefaults ] ;
+    //self.userDefaults =  [ NSUserDefaults standardUserDefaults ] ;
+    self.userDefaults =  [[NSUserDefaults alloc] initWithSuiteName:@"group.Just-The-Tip"] ;
     [ self getDefaults ] ;
     
     self.BLUE =  [ UIColor colorWithRed: ( 0 )  green: ( 122/255.0 )  blue: ( 1 )  alpha:1 ] ;
