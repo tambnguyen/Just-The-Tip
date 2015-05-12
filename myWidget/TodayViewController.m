@@ -55,8 +55,7 @@
 
 -  ( void )  updateSubTotal:  ( float )  value
 {
-    [ self validateSub ];
-    NSString * strTotal = self.strSubTotal;
+    NSString * strTotal = self.label_subtotal.text.length > 0 ?  [ self.label_subtotal.text stringByReplacingOccurrencesOfString:@"$ " withString:@"" ] : NULL;
     
     if  ( value == -1 )  {  // dot
         if  ( strTotal.length > 0 )  { self.strSubTotal =  [ NSString stringWithFormat:@"%@%@", strTotal, @"." ] ; }
@@ -78,7 +77,8 @@
             self.strSubTotal =  [ NSString stringWithFormat:@"%@%d", strTotal,  ( int ) value ] ;
         }
     }
-    self.label_subtotal.text = [ NSString stringWithFormat:@"%@", self.strSubTotal ] ;
+    
+    self.label_subtotal.text = [ NSString stringWithFormat:@"$ %@", self.strSubTotal ] ;
     
     self.subtotal = self.strSubTotal.floatValue;
 
@@ -87,9 +87,23 @@
     [ self updateFields ] ;
 }
 
-- ( void ) validateSub
+// - (void)methodName:(NSString *)parameterOne methodNameContinues:(NSString *)parameterTwo;
+- ( void ) validateWithOldString : ( NSString * ) oldString withNewChar : ( NSString * ) newChar
 {
+    NSString * newString = [ NSString stringWithFormat:@"%@%@", [ oldString stringByReplacingOccurrencesOfString:@"$ " withString:@"" ], newChar ];
+    NSString * pattern1 = @"(\\d*[.])?\\d+";
+    NSString * pattern2 = @"\\d*[.]";
+    NSPredicate * myTest1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern1];
+    NSPredicate * myTest2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern2];
     
+    if ( [ myTest1 evaluateWithObject: newString ] || [ myTest2 evaluateWithObject: newString ] || [ newString length ] == 0 )
+    {
+        self.strSubTotal = newString;
+    }
+    else
+    {
+        self.label_subtotal.text = [ NSString stringWithFormat:@"%@", self.strSubTotal ] ;
+    }
 }
 
 -  ( void )  calcTotal: ( float ) subtotal
@@ -118,61 +132,58 @@
 }
 
 -  ( IBAction ) touchDown_b0: ( id ) sender {
-    [ self updateSubTotal:0.0 ] ;
+    [ self validateWithOldString:self.strSubTotal withNewChar: @"0" ];
+    [ self updateSubTotal:-3 ] ;
 }
 
 -  ( IBAction ) touchDown_b1: ( id ) sender {
-    [ self updateSubTotal:1.0 ] ;
+    [ self validateWithOldString:self.strSubTotal withNewChar: @"1" ];
+    [ self updateSubTotal:-3 ] ;
 }
 
 -  ( IBAction ) touchDown_b2: ( id ) sender {
-    [ self updateSubTotal:2.0 ] ;
+    [ self validateWithOldString:self.strSubTotal withNewChar: @"2" ];
+    [ self updateSubTotal:-3 ] ;
 }
 
 -  ( IBAction ) touchDown_b3: ( id ) sender {
-    [ self updateSubTotal:3.0 ] ;
+    [ self validateWithOldString:self.strSubTotal withNewChar: @"3" ];
+    [ self updateSubTotal:-3 ] ;
 }
 
 -  ( IBAction ) touchDown_b4: ( id ) sender {
-    [ self updateSubTotal:4.0 ] ;
+    [ self validateWithOldString:self.strSubTotal withNewChar: @"4" ];
+    [ self updateSubTotal:-3 ] ;
 }
 
 -  ( IBAction ) touchDown_b5: ( id ) sender {
-    [ self updateSubTotal:5.0 ] ;
+    [ self validateWithOldString:self.strSubTotal withNewChar: @"5" ];
+    [ self updateSubTotal:-3 ] ;
 }
 
 -  ( IBAction ) touchDown_b6: ( id ) sender {
-    [ self updateSubTotal:6.0 ] ;
+    [ self validateWithOldString:self.strSubTotal withNewChar: @"6" ];
+    [ self updateSubTotal:-3 ] ;
 }
 
 -  ( IBAction ) touchDown_b7: ( id ) sender {
-    [ self updateSubTotal:7.0 ] ;
+    [ self validateWithOldString:self.strSubTotal withNewChar: @"7" ];
+    [ self updateSubTotal:-3 ] ;
 }
 
 -  ( IBAction ) touchDown_b8: ( id ) sender {
-    [ self updateSubTotal:8.0 ] ;
+    [ self validateWithOldString:self.strSubTotal withNewChar: @"8" ];
+    [ self updateSubTotal:-3 ] ;
 }
 
 -  ( IBAction ) touchDown_b9: ( id ) sender {
-    [ self updateSubTotal:9.0 ] ;
+    [ self validateWithOldString:self.strSubTotal withNewChar: @"9" ];
+    [ self updateSubTotal:-3 ] ;
 }
 
 -  ( IBAction ) touchDown_dot: ( id ) sender {
-    NSString * subtotal = [ self.label_subtotal.text stringByReplacingOccurrencesOfString:@".." withString:@"." ] ;
-    NSString * pattern1 = @"(\\d*[.])?\\d+";
-    NSString * pattern2 = @"\\d*[.]";
-    NSPredicate * myTest1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern1];
-    NSPredicate * myTest2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern2];
-    
-    if ( [ myTest1 evaluateWithObject: subtotal ] || [ myTest2 evaluateWithObject: subtotal ] || [ subtotal length ] == 0 )
-    {
-        self.strSubTotal = subtotal;
-    }
-    else
-    {
-        self.label_subtotal.text = self.strSubTotal;
-    }
-    [ self updateSubTotal:-1 ] ;
+    [ self validateWithOldString:self.strSubTotal withNewChar: @"." ];
+    [ self updateSubTotal:-3 ] ;
 }
 
 - (IBAction)touchDown_back:(id)sender {
