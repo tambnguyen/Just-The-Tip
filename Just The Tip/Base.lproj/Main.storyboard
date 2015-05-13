@@ -1240,13 +1240,24 @@
                                 <exclude reference="m7n-MA-jpP"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="seu-QG-mLb"/>
                                 <exclude reference="etj-XY-XHV"/>
                                 <exclude reference="Lkh-dR-alD"/>
                                 <exclude reference="d7N-hZ-Pji"/>
                                 <exclude reference="2GT-of-XCa"/>
                                 <exclude reference="OKj-Aq-1bB"/>
                                 <exclude reference="VsE-cZ-vZK"/>
-                                <exclude reference="seu-QG-mLb"/>
+                                <exclude reference="3lz-LX-amR"/>
+                                <exclude reference="qeq-TD-5W1"/>
+                                <exclude reference="z0n-0o-8at"/>
+                                <exclude reference="23H-IJ-5Wg"/>
+                                <exclude reference="YHG-ai-JbQ"/>
+                                <exclude reference="jyi-k9-RP9"/>
+                                <exclude reference="shW-dG-dlU"/>
+                                <exclude reference="y45-pr-6Im"/>
+                                <exclude reference="BAe-hm-io3"/>
+                                <exclude reference="Ids-OH-DcU"/>
+                                <exclude reference="L0z-by-sIa"/>
                                 <exclude reference="9IS-nu-Sfh"/>
                                 <exclude reference="A3d-EL-rGY"/>
                                 <exclude reference="O4U-2v-p4A"/>
@@ -1261,17 +1272,6 @@
                                 <exclude reference="6d1-bh-fgv"/>
                                 <exclude reference="9or-zy-pBG"/>
                                 <exclude reference="tjU-0e-Y03"/>
-                                <exclude reference="3lz-LX-amR"/>
-                                <exclude reference="qeq-TD-5W1"/>
-                                <exclude reference="z0n-0o-8at"/>
-                                <exclude reference="23H-IJ-5Wg"/>
-                                <exclude reference="YHG-ai-JbQ"/>
-                                <exclude reference="jyi-k9-RP9"/>
-                                <exclude reference="shW-dG-dlU"/>
-                                <exclude reference="y45-pr-6Im"/>
-                                <exclude reference="BAe-hm-io3"/>
-                                <exclude reference="Ids-OH-DcU"/>
-                                <exclude reference="L0z-by-sIa"/>
                             </mask>
                         </variation>
                     </view>
