@@ -52,7 +52,13 @@
     
     self.strSubTotal = @"";
 }
-
+/*
+-  ( void ) viewWillAppear: ( BOOL ) animated
+{
+    [ super viewWillAppear:animated ] ;
+    self.label_subtotal.text = @"$ ";
+}
+*/
 -  ( void )  updateSubTotal:  ( float )  value
 {
     NSString * strTotal = self.label_subtotal.text.length > 0 ?  [ self.label_subtotal.text stringByReplacingOccurrencesOfString:@"$ " withString:@"" ] : NULL;

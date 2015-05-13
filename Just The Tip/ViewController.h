@@ -48,6 +48,8 @@
 @property (assign) float total;
 @property (assign) float tip;
 @property (assign) float subtotal;
+@property (assign) float split_tip;
+@property (assign) float split_total;
 
 @property (assign) BOOL bRoundTip;
 @property (assign) BOOL bRoundTotal;

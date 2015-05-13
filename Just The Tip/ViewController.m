@@ -47,12 +47,19 @@
     }
     
     // BEGIN ENABLE DONE BUTTON FOR NUMPAD
-    UIToolbar * keyboardDoneButtonView = [[UIToolbar alloc] init];
+    UIToolbar * keyboardDoneButtonView = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 32)];;
+    keyboardDoneButtonView.items = [NSArray arrayWithObjects:
+                                    [[UIBarButtonItem alloc] initWithTitle:@"Clear" style:UIBarButtonItemStyleDone target:self action:@selector(clearClicked:)],
+                                    [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                                    [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneClicked:)], nil
+                                    ];
     [keyboardDoneButtonView sizeToFit];
-    UIBarButtonItem * doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneClicked:)];
-    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
     self.field_SubTotal.inputAccessoryView = keyboardDoneButtonView;
     // END ENABLE DONE BUTTON FOR NUMPAD
+    
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 16, 60)];
+    self.field_SubTotal.rightView = paddingView;
+    self.field_SubTotal.rightViewMode = UITextFieldViewModeAlways;
 
     [ self animate ] ;
 }
@@ -62,22 +69,22 @@
     [self.view endEditing:YES];
 }
 
+- (IBAction)clearClicked:(id)sender
+{
+    self.field_SubTotal.text = @"";
+}
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [ self.view endEditing:YES ] ;
     [ self.field_SubTotal resignFirstResponder ] ;
 }
 
--  ( void ) viewDidAppear: ( BOOL ) animated
-{
-    [ super viewDidAppear:animated ] ;
-    [ self.myPicker selectRow:self.people.integerValue-1 inComponent:0 animated:YES ] ;
-    [ self.myPicker selectRow:self.percent.integerValue-1 inComponent:1 animated:YES ] ;
-}
-
 -  ( void ) viewWillAppear: ( BOOL ) animated
 {
     [ super viewWillAppear:animated ] ;
+    [ self.myPicker selectRow:self.people.integerValue-1 inComponent:0 animated:YES ] ;
+    [ self.myPicker selectRow:self.percent.integerValue-1 inComponent:1 animated:YES ] ;
     [ self animate ] ;
 }
 
@@ -170,7 +177,7 @@
 
 -  ( void )  updateSubTotal:  ( float )  value
 {
-    //NSString *strTotal = self.field_SubTotal.text.length > 0 ?  [ self.field_SubTotal.text stringByReplacingOccurrencesOfString:@"$ " withString:@"" ]  : NULL;
+    //NSString * strTotal = self.field_SubTotal.text.length > 0 ?  [ self.field_SubTotal.text stringByReplacingOccurrencesOfString:@"$ " withString:@"" ]  : NULL;
     NSString * strTotal = self.strSubTotal;
     
     if  ( value == -1 )  {  // dot
@@ -193,7 +200,7 @@
             self.strSubTotal =  [ NSString stringWithFormat:@"%@%d", strTotal,  ( int ) value ] ;
         }
     }
-    self.field_SubTotal.text = [ NSString stringWithFormat:@"%@", self.strSubTotal ] ;
+    self.field_SubTotal.text = [ NSString stringWithFormat:@"$ %@", self.strSubTotal ] ;
     
     self.subtotal = self.strSubTotal.floatValue;
     [ self.userDefaults setFloat:self.strSubTotal.floatValue forKey:@"sub_total" ] ;
@@ -202,33 +209,39 @@
     [ self updateFields ] ;
 }
 
--  ( void )  calcTotal: ( float ) subtotal
+- ( void ) calcTip: ( float ) subtotal
 {
-    self.total =  ( self.subtotal + self.tip ) / self.people.intValue;
-    if  ( self.bRoundTotal ) 
+    self.tip = subtotal * self.percent.floatValue / 100.0;
+    self.split_tip = self.tip / self.people.intValue;
+    if  ( self.bRoundTip ) 
     {
-        self.total = ceilf ( self.total ) ;
-        self.tip = self.total - ( self.subtotal / self.people.intValue ) ;
+        self.tip =  ( float ) ceilf ( self.tip ) ;
+        self.split_tip = (float) ceilf ( self.split_tip );
     }
 }
 
--  ( void )  calcTip: ( float ) subtotal
+- ( void ) calcTotal: ( float ) subtotal
 {
-    self.tip = subtotal * self.percent.floatValue / 100.0;
-    if  ( self.bRoundTip ) 
+    self.total =  ( self.subtotal + self.tip );
+    self.split_total = self.total / self.people.intValue;
+    if  ( self.bRoundTotal )
     {
-        self.tip =  ( float ) ceilf ( self.tip / self.people.intValue ) ;
+        self.total = ( float ) ceilf ( self.total ) ;
+        self.tip = self.total - ( self.subtotal ) ;
+        
+        self.split_total = ( float ) ceilf ( self.split_total );
+        self.split_tip = self.split_total - ( self.subtotal / self.people.intValue );
     }
 }
 
 - ( void ) updateFields
 {
-    self.field_Tip.text =  [ NSString stringWithFormat:@"$ %.2f", self.tip ] ;
-    self.field_Total.text = [ NSString stringWithFormat:@"$ %.2f", self.total ] ;
+    self.field_Tip.text =  [ NSString stringWithFormat:@"$ %.2f", self.split_tip ] ;
+    self.field_Total.text = [ NSString stringWithFormat:@"$ %.2f", self.split_total ] ;
     if ( self.people.intValue > 1 )
     {
-        self.label_Tip.text = [NSString stringWithFormat:@"Tip (%.2f)", self.tip * self.people.intValue ];
-        self.label_Total.text = [NSString stringWithFormat:@"Total (%.2f)", self.total * self.people.intValue ];
+        self.label_Tip.text = [NSString stringWithFormat:@"Total tip: $%.2f", self.tip ];
+        self.label_Total.text = [NSString stringWithFormat:@"Total: $%.2f", self.total ];
     }
     else
     {
@@ -306,7 +319,7 @@
 -  ( IBAction ) up_DontRound: ( id ) sender {
     self.bDontRound = self.switch_DontRound.isOn;
     self.bRoundTip = FALSE;
-    self.bRoundTotal = !self.switch_DontRound.isOn;
+    self.bRoundTotal = FALSE;
     
     [ self animate ] ;
     [ self updateSubTotal:-3 ] ;
@@ -314,6 +327,11 @@
 
 - (IBAction)up_field_subtotal:(id)sender {
     NSString * subtotal = [ self.field_SubTotal.text stringByReplacingOccurrencesOfString:@".." withString:@"." ] ;
+    subtotal = [ subtotal stringByReplacingOccurrencesOfString:@"$ " withString:@"" ];
+    if ( subtotal.length == 2 && [ subtotal isEqualToString:@"00" ] )
+    {
+        subtotal = [ NSString stringWithFormat:@"0" ];
+    }
     NSString * pattern1 = @"(\\d*[.])?\\d+";
     NSString * pattern2 = @"\\d*[.]";
     NSPredicate * myTest1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern1];
