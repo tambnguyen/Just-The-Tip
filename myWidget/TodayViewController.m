@@ -19,6 +19,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.preferredContentSize = CGSizeMake(0, 350);
+    
     self.userDefaults =  [[NSUserDefaults alloc] initWithSuiteName:@"group.Just-The-Tip"] ;
     [ self getDefaults ] ;
 }
@@ -97,6 +99,10 @@
 - ( void ) validateWithOldString : ( NSString * ) oldString withNewChar : ( NSString * ) newChar
 {
     NSString * newString = [ NSString stringWithFormat:@"%@%@", [ oldString stringByReplacingOccurrencesOfString:@"$ " withString:@"" ], newChar ];
+    if ( newString.length == 2 && [ newString isEqualToString:@"00" ] )
+    {
+        newString = [ NSString stringWithFormat:@"0" ];
+    }
     NSString * pattern1 = @"(\\d*[.])?\\d+";
     NSString * pattern2 = @"\\d*[.]";
     NSPredicate * myTest1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern1];
