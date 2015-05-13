@@ -60,6 +60,8 @@
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 16, 60)];
     self.field_SubTotal.rightView = paddingView;
     self.field_SubTotal.rightViewMode = UITextFieldViewModeAlways;
+    
+    //[ self.field_SubTotal becomeFirstResponder ];
 
     [ self animate ] ;
 }
@@ -71,7 +73,9 @@
 
 - (IBAction)clearClicked:(id)sender
 {
+    self.strSubTotal = @"";
     self.field_SubTotal.text = @"";
+    [ self updateSubTotal:-3 ];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -111,7 +115,7 @@
     self.percent =  [ NSNumber numberWithFloat:self.default_tip ] ;
     self.tip = self.default_tip;
     
-    self.strSubTotal = @"";
+    self.strSubTotal = @"$ ";
 }
 
 -  ( void ) animate
