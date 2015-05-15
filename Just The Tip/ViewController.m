@@ -20,7 +20,6 @@
     [ super viewDidLoad ] ;
     // Do any additional setup after loading the view, typically from a nib.
     
-    //self.userDefaults =  [ NSUserDefaults standardUserDefaults ] ;
     self.userDefaults =  [[NSUserDefaults alloc] initWithSuiteName:@"group.Just-The-Tip"] ;
     [ self getDefaults ] ;
     
@@ -30,8 +29,6 @@
     self.BLACK =  [ UIColor colorWithRed: ( 0 )  green: ( 0 )  blue: ( 0 )  alpha:1 ] ;
     self.LIGHTBLUE =  [ UIColor colorWithRed: ( 90/255 )  green: ( 200/255 )  blue: ( 250/255 )  alpha:1 ] ;
     self.ORANGE =  [ UIColor colorWithRed: ( 1 )  green: ( 149/255 )  blue: ( 0 )  alpha:1 ] ;
-    
-    //self.arrButtons = @ [ self.numButton1, self.numButton2, self.numButton3, self.numButton4, self.numButton5, self.numButton6, self.numButton7, self.numButton8, self.numButton9, self.numButton0, self.numButtonDot, self.buttonDel ] ;
     
     self.arrPercent = @ [ @"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30",@"31",@"32",@"33",@"34",@"35",@"36",@"37",@"38",@"39",@"40",@"41",@"42",@"43",@"44",@"45",@"46",@"47",@"48",@"49",@"50" ] ;
     self.arrPeople = @ [ @"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20" ] ;
@@ -331,7 +328,8 @@
 
 - (IBAction)up_field_subtotal:(id)sender {
     NSString * subtotal = [ self.field_SubTotal.text stringByReplacingOccurrencesOfString:@".." withString:@"." ] ;
-    subtotal = [ subtotal stringByReplacingOccurrencesOfString:@"$ " withString:@"" ];
+    subtotal = [ subtotal stringByReplacingOccurrencesOfString:@"$" withString:@"" ];
+    subtotal = [ subtotal stringByReplacingOccurrencesOfString:@" " withString:@"" ];
     if ( subtotal.length == 2 && [ subtotal isEqualToString:@"00" ] )
     {
         subtotal = [ NSString stringWithFormat:@"0" ];
@@ -340,6 +338,9 @@
     NSString * pattern2 = @"\\d*[.]";
     NSPredicate * myTest1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern1];
     NSPredicate * myTest2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern2];
+    
+    self.strSubTotal = subtotal;
+    self.field_SubTotal.text = subtotal;
     
     if ( [ myTest1 evaluateWithObject: subtotal ] || [ myTest2 evaluateWithObject: subtotal ] || [ subtotal length ] == 0 )
     {
