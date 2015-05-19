@@ -112,7 +112,7 @@
     self.percent =  [ NSNumber numberWithFloat:self.default_tip ] ;
     self.tip = self.default_tip;
     
-    self.strSubTotal = @"$ ";
+    self.strSubTotal = @"";
 }
 
 -  ( void ) animate
