@@ -28,10 +28,11 @@
     
     // BEGIN ENABLE DONE BUTTON FOR NUMPAD
     UIToolbar * keyboardDoneButtonView = [[UIToolbar alloc] init];
+    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:
+                                      [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                                      [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneClicked:)],
+                                      nil]];
     [keyboardDoneButtonView sizeToFit];
-    UIBarButtonItem * doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneClicked:)];
-    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
-    self.textDefaultTax.inputAccessoryView = keyboardDoneButtonView;
     self.textDefaultTip.inputAccessoryView = keyboardDoneButtonView;
     // END ENABLE DONE BUTTON FOR NUMPAD
     
