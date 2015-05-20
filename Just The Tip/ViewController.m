@@ -339,9 +339,6 @@
     NSPredicate * myTest1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern1];
     NSPredicate * myTest2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern2];
     
-    self.strSubTotal = subtotal;
-    self.field_SubTotal.text = subtotal;
-    
     if ( [ myTest1 evaluateWithObject: subtotal ] || [ myTest2 evaluateWithObject: subtotal ] || [ subtotal length ] == 0 )
     {
         self.strSubTotal = subtotal;
