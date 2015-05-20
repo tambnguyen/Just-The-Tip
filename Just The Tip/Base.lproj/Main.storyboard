@@ -885,7 +885,7 @@
                             </label>
                             <pickerView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6v-Ie-7xv">
                                 <rect key="frame" x="152" y="128" width="297" height="216"/>
-                                <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="297" id="Op9-gV-Kee"/>
@@ -1138,7 +1138,7 @@
                                 </connections>
                             </switch>
                         </subviews>
-                        <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.14901960780000001" green="0.1960784314" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="iBM-bH-lzm" firstAttribute="centerX" secondItem="7uV-u7-C3D" secondAttribute="centerX" id="20e-3m-KAM"/>
