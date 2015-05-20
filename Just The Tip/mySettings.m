@@ -34,6 +34,7 @@
                                       nil]];
     [keyboardDoneButtonView sizeToFit];
     self.textDefaultTip.inputAccessoryView = keyboardDoneButtonView;
+    self.textDefaultTax.inputAccessoryView = keyboardDoneButtonView;
     // END ENABLE DONE BUTTON FOR NUMPAD
     
     [ self animate ] ;
