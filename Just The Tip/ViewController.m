@@ -23,13 +23,6 @@
     self.userDefaults =  [[NSUserDefaults alloc] initWithSuiteName:@"group.Just-The-Tip"] ;
     [ self getDefaults ] ;
     
-    self.BLUE =  [ UIColor colorWithRed: ( 0 )  green: ( 122/255.0 )  blue: ( 1 )  alpha:1 ] ;
-    self.GRAY =  [ UIColor colorWithRed: ( 142/255.0 )  green: ( 142/255.0 )  blue: ( 147/255.0 )  alpha:1 ] ;
-    self.RED =  [ UIColor colorWithRed: ( 1 )  green: ( 59/255.0 )  blue: ( 48/255.0 )  alpha:1 ] ;
-    self.BLACK =  [ UIColor colorWithRed: ( 0 )  green: ( 0 )  blue: ( 0 )  alpha:1 ] ;
-    self.LIGHTBLUE =  [ UIColor colorWithRed: ( 90/255 )  green: ( 200/255 )  blue: ( 250/255 )  alpha:1 ] ;
-    self.ORANGE =  [ UIColor colorWithRed: ( 1 )  green: ( 149/255 )  blue: ( 0 )  alpha:1 ] ;
-    
     self.arrPercent = @ [ @"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30",@"31",@"32",@"33",@"34",@"35",@"36",@"37",@"38",@"39",@"40",@"41",@"42",@"43",@"44",@"45",@"46",@"47",@"48",@"49",@"50" ] ;
     self.arrPeople = @ [ @"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20" ] ;
     
@@ -54,12 +47,16 @@
     self.field_SubTotal.inputAccessoryView = keyboardDoneButtonView;
     // END ENABLE DONE BUTTON FOR NUMPAD
     
+    /*
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 16, 60)];
     self.field_SubTotal.rightView = paddingView;
     self.field_SubTotal.rightViewMode = UITextFieldViewModeAlways;
+    */
     
     //[ self.field_SubTotal becomeFirstResponder ];
 
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animate) name:@"appDidBecomeActive" object:nil];
+    
     [ self animate ] ;
 }
 
@@ -81,7 +78,7 @@
     [ self.field_SubTotal resignFirstResponder ] ;
 }
 
--  ( void ) viewWillAppear: ( BOOL ) animated
+- ( void ) viewWillAppear: ( BOOL ) animated
 {
     [ super viewWillAppear:animated ] ;
     [ self.myPicker selectRow:self.people.integerValue-1 inComponent:0 animated:YES ] ;
