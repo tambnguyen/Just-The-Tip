@@ -18,6 +18,7 @@
 		234DC8B41AFBF05A006A498A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 234DC8B31AFBF05A006A498A /* Images.xcassets */; };
 		234DC8B71AFBF05A006A498A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 234DC8B51AFBF05A006A498A /* LaunchScreen.xib */; };
 		234DC8C31AFBF05B006A498A /* Just_The_TipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 234DC8C21AFBF05B006A498A /* Just_The_TipTests.m */; };
+		2375C6351B1027A800C00086 /* TesseractOCR in Resources */ = {isa = PBXBuildFile; fileRef = 2375C6341B1027A800C00086 /* TesseractOCR */; };
 		23B0FA941AFE8DC600B07044 /* mySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B0FA931AFE8DC600B07044 /* mySettings.m */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		234DC8BC1AFBF05A006A498A /* Just The TipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Just The TipTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		234DC8C11AFBF05B006A498A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		234DC8C21AFBF05B006A498A /* Just_The_TipTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Just_The_TipTests.m; sourceTree = "<group>"; };
+		2375C6341B1027A800C00086 /* TesseractOCR */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TesseractOCR; sourceTree = "<group>"; };
 		23B0FA921AFE8DC600B07044 /* mySettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mySettings.h; sourceTree = "<group>"; };
 		23B0FA931AFE8DC600B07044 /* mySettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mySettings.m; sourceTree = "<group>"; };
 		23B5CEB81B002F1600DCB927 /* Just The Tip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Just The Tip.entitlements"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		234DC8A51AFBF05A006A498A /* Just The Tip */ = {
 			isa = PBXGroup;
 			children = (
+				2375C6341B1027A800C00086 /* TesseractOCR */,
 				23B5CEB81B002F1600DCB927 /* Just The Tip.entitlements */,
 				234DC8AA1AFBF05A006A498A /* AppDelegate.h */,
 				234DC8AB1AFBF05A006A498A /* AppDelegate.m */,
@@ -325,6 +328,7 @@
 			files = (
 				234DC8B21AFBF05A006A498A /* Main.storyboard in Resources */,
 				234DC8B71AFBF05A006A498A /* LaunchScreen.xib in Resources */,
+				2375C6351B1027A800C00086 /* TesseractOCR in Resources */,
 				234DC8B41AFBF05A006A498A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
