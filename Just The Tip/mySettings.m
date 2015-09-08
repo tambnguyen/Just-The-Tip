@@ -7,6 +7,7 @@
 //
 
 #import "mySettings.h"
+#import "ViewController.h"
 
 @interface mySettings  (  ) 
 
@@ -67,16 +68,17 @@
 
 -  ( void ) getDefaults
 {
-    self.bDefaultRoundTip =  [ self.userDefaults boolForKey:@"default_roundtip" ] ;
-    self.bDefaultDontRound =  [ self.userDefaults boolForKey:@"default_dontround" ] ;
-    self.bDefaultRoundTotal =  [ self.userDefaults boolForKey:@"default_roundtotal" ] ;
-    self.bRememberLastBill =  [ self.userDefaults boolForKey:@"remember_last_bill" ] ;
+    self.bDefaultRoundTip = [ self.userDefaults boolForKey:@"default_roundtip" ] ;
+    self.bDefaultDontRound = [ self.userDefaults boolForKey:@"default_dontround" ] ;
+    self.bDefaultRoundTotal = [ self.userDefaults boolForKey:@"default_roundtotal" ] ;
+    self.bRememberLastBill = [ self.userDefaults boolForKey:@"remember_last_bill" ] ;
+    self.bExcludeTax = [ self.userDefaults boolForKey:@"exclude_tax" ] ;
     
     self.has_default_tax = [ self.userDefaults boolForKey:@"has_default_tax" ] ;
     self.has_default_tip = [ self.userDefaults boolForKey:@"has_default_tip" ] ;
     
-    self.default_tax =  self.has_default_tax ? [ self.userDefaults floatForKey:@"default_tax" ] : 8.875;
-    self.default_tip =  self.has_default_tip ? [ self.userDefaults floatForKey:@"default_tip" ] : 15.0;
+    self.default_tax = self.has_default_tax ? [ self.userDefaults floatForKey:@"default_tax" ] : 8.875;
+    self.default_tip = self.has_default_tip ? [ self.userDefaults floatForKey:@"default_tip" ] : 15.0;
 }
 
 -  ( void ) setDefaults
@@ -85,6 +87,7 @@
      [ self.userDefaults setBool:self.bDefaultDontRound forKey:@"default_dontround" ] ;
      [ self.userDefaults setBool:self.bDefaultRoundTotal forKey:@"default_roundtotal" ] ;
      [ self.userDefaults setBool:self.bRememberLastBill forKey:@"remember_last_bill" ] ;
+     [ self.userDefaults setBool:self.bExcludeTax forKey:@"exclude_tax" ] ;
     
      [ self.userDefaults setFloat:self.default_tax forKey:@"default_tax" ] ;
      [ self.userDefaults setBool:self.has_default_tax forKey:@"has_default_tax" ] ;
@@ -101,6 +104,7 @@
      [ self.switchDefaultRoundTotal setOn:self.bDefaultRoundTotal animated:YES ] ;
      [ self.switchDefaultRoundTip setOn:self.bDefaultRoundTip animated:YES ] ;
      [ self.switchRememberLastBill setOn:self.bRememberLastBill animated:YES ] ;
+     [ self.switchExcludeTax setOn:self.bExcludeTax animated:YES ] ;
 }
 
 -  ( IBAction ) up_default_roundtip: ( id ) sender {
@@ -132,6 +136,11 @@
 
 -  ( IBAction ) up_default_remember_last_bill: ( id ) sender {
     self.bRememberLastBill = self.switchRememberLastBill.isOn;
+    [ self setDefaults ] ;
+}
+
+- (IBAction)up_default_exclude_tax:(id)sender {
+    self.bExcludeTax = self.switchExcludeTax.isOn;
     [ self setDefaults ] ;
 }
 

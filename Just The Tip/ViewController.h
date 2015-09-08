@@ -55,6 +55,7 @@
 @property (assign) BOOL bRoundTotal;
 @property (assign) BOOL bDontRound;
 @property (assign) BOOL bRememberLastBill;
+@property (assign) BOOL bExcludeTax;
 
 @property (assign) float default_tip;
 @property (assign) float default_tax;
@@ -91,6 +92,7 @@
 @property (strong, nonatomic) IBOutlet UISwitch *switch_RoundTip;
 @property (strong, nonatomic) IBOutlet UISwitch *switch_RoundTotal;
 @property (strong, nonatomic) IBOutlet UISwitch *switch_DontRound;
+
 
 - (IBAction)up_field_subtotal:(id)sender;
 

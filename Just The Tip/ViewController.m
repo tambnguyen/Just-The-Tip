@@ -93,23 +93,25 @@
 {
     self.people = [ NSNumber numberWithInteger: [ self.userDefaults integerForKey:@"default_people" ] ? [ self.userDefaults integerForKey:@"default_people" ] : 1 ] ;
     
-    self.bDefaultRoundTip =  [ self.userDefaults boolForKey:@"default_roundtip" ] ;
-    self.bDefaultDontRound =  [ self.userDefaults boolForKey:@"default_dontround" ] ;
-    self.bDefaultRoundTotal =  [ self.userDefaults boolForKey:@"default_roundtotal" ] ;
-    self.bRememberLastBill =  [ self.userDefaults boolForKey:@"remember_last_bill" ] ;
-    self.subtotal =  [ self.userDefaults floatForKey:@"sub_total" ] ;
+    self.bDefaultRoundTip = [ self.userDefaults boolForKey:@"default_roundtip" ] ;
+    self.bDefaultDontRound = [ self.userDefaults boolForKey:@"default_dontround" ] ;
+    self.bDefaultRoundTotal = [ self.userDefaults boolForKey:@"default_roundtotal" ] ;
+    self.bRememberLastBill = [ self.userDefaults boolForKey:@"remember_last_bill" ] ;
+    self.bExcludeTax = [ self.userDefaults boolForKey:@"exclude_tax" ] ;
+    
+    self.subtotal = [ self.userDefaults floatForKey:@"sub_total" ] ;
     
     self.has_default_tax = [ self.userDefaults boolForKey:@"has_default_tax" ] ;
     self.has_default_tip = [ self.userDefaults boolForKey:@"has_default_tip" ] ;
     
-    self.default_tax =  self.has_default_tax ? [ self.userDefaults floatForKey:@"default_tax" ] : 8.875;
-    self.default_tip =  self.has_default_tip ? [ self.userDefaults floatForKey:@"default_tip" ] : 15.0;
+    self.default_tax = self.has_default_tax ? [ self.userDefaults floatForKey:@"default_tax" ] : 8.875;
+    self.default_tip = self.has_default_tip ? [ self.userDefaults floatForKey:@"default_tip" ] : 15.0;
     
     self.bRoundTip = self.bDefaultRoundTip;
     self.bRoundTotal = self.bDefaultRoundTotal;
     self.bDontRound = self.bDefaultDontRound;
     
-    self.percent =  [ NSNumber numberWithFloat:self.default_tip ] ;
+    self.percent = [ NSNumber numberWithFloat:self.default_tip ] ;
     self.tip = self.default_tip;
     
     self.strSubTotal = @"";
@@ -212,7 +214,13 @@
 
 - ( void ) calcTip: ( float ) subtotal
 {
-    self.tip = subtotal * self.percent.floatValue / 100.0;
+    if ( self.bExcludeTax ) {
+        self.tip = ( subtotal / ( ( 100.0 + self.default_tax ) / 100.0 ) ) * self.percent.floatValue / 100.0;
+    }
+    else {
+        self.tip = subtotal * self.percent.floatValue / 100.0;
+    }
+    
     self.split_tip = self.tip / self.people.intValue;
     if  ( self.bRoundTip ) 
     {
