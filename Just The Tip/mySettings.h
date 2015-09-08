@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
 
-@interface mySettings : UIViewController
+@interface mySettings : UIViewController {
+    //id <ViewControllerDelegate> delegate;
+}
+
+//@property (nonatomic, assign) id <ViewControllerDelegate> delegate;
+@property (nonatomic, assign) id delegate;
+//@property (retain) id delegate;
 
 @property (nonatomic,strong) NSUserDefaults *userDefaults;
 

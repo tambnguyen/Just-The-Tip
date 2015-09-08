@@ -15,6 +15,8 @@
 
 @implementation mySettings
 
+@synthesize delegate;
+
 -  ( void ) viewDidLoad {
      [ super viewDidLoad ] ;
     // Do any additional setup after loading the view.
@@ -37,6 +39,8 @@
     self.textDefaultTip.inputAccessoryView = keyboardDoneButtonView;
     self.textDefaultTax.inputAccessoryView = keyboardDoneButtonView;
     // END ENABLE DONE BUTTON FOR NUMPAD
+    
+    
     
     [ self animate ] ;
 }
@@ -142,6 +146,8 @@
 - (IBAction)up_default_exclude_tax:(id)sender {
     self.bExcludeTax = self.switchExcludeTax.isOn;
     [ self setDefaults ] ;
+    [ self.delegate getDefaults ];
+    [ self.delegate updateSubTotal:-3 ];
 }
 
 -  ( IBAction ) up_default_tax: ( id ) sender {

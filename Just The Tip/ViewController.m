@@ -8,13 +8,16 @@
 //  Color scheme: https://color.adobe.com/1944mustang-color-theme-4817/
 
 #import "ViewController.h"
+#import "mySettings.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface ViewController  (  ) 
-
+@property (assign) mySettings *settingsVC;
 @end
 
 @implementation ViewController
+
+@synthesize delegate;
 
 -  ( void ) viewDidLoad {
     [ super viewDidLoad ] ;
@@ -23,12 +26,12 @@
     self.userDefaults =  [[NSUserDefaults alloc] initWithSuiteName:@"group.Just-The-Tip"] ;
     [ self getDefaults ] ;
     
-    self.BLUE =  [ UIColor colorWithRed: ( 0 )  green: ( 122/255.0 )  blue: ( 1 )  alpha:1 ] ;
+    /*self.BLUE =  [ UIColor colorWithRed: ( 0 )  green: ( 122/255.0 )  blue: ( 1 )  alpha:1 ] ;
     self.GRAY =  [ UIColor colorWithRed: ( 142/255.0 )  green: ( 142/255.0 )  blue: ( 147/255.0 )  alpha:1 ] ;
     self.RED =  [ UIColor colorWithRed: ( 1 )  green: ( 59/255.0 )  blue: ( 48/255.0 )  alpha:1 ] ;
     self.BLACK =  [ UIColor colorWithRed: ( 0 )  green: ( 0 )  blue: ( 0 )  alpha:1 ] ;
     self.LIGHTBLUE =  [ UIColor colorWithRed: ( 90/255 )  green: ( 200/255 )  blue: ( 250/255 )  alpha:1 ] ;
-    self.ORANGE =  [ UIColor colorWithRed: ( 1 )  green: ( 149/255 )  blue: ( 0 )  alpha:1 ] ;
+    self.ORANGE =  [ UIColor colorWithRed: ( 1 )  green: ( 149/255 )  blue: ( 0 )  alpha:1 ] ;*/
     
     self.arrPercent = @ [ @"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30",@"31",@"32",@"33",@"34",@"35",@"36",@"37",@"38",@"39",@"40",@"41",@"42",@"43",@"44",@"45",@"46",@"47",@"48",@"49",@"50" ] ;
     self.arrPeople = @ [ @"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20" ] ;
@@ -36,7 +39,7 @@
     self.myPicker.dataSource = self;
     self.myPicker.delegate = self;
     
-    if  ( self.bRememberLastBill ) 
+    if ( self.bRememberLastBill )
     {
         self.subtotal =  [ self.userDefaults floatForKey:@"sub_total" ] ;
         self.strSubTotal =  [ NSString stringWithFormat: @"%.2f", self.subtotal ] ;
@@ -59,6 +62,10 @@
     self.field_SubTotal.rightViewMode = UITextFieldViewModeAlways;
     
     //[ self.field_SubTotal becomeFirstResponder ];
+    
+    //self.settingsVC = [[mySettings alloc] init];
+    //mySettings *settingsVC = self.childViewControllers[0];
+    self.settingsVC.delegate = self ;
 
     [ self animate ] ;
 }
@@ -155,13 +162,13 @@
     NSAttributedString *attString;
     if ( component == 0 )
     {
-        title =  [ self.arrPeople objectAtIndex:row ] ;
+        title = [ self.arrPeople objectAtIndex:row ] ;
     }
     else
     {
-        title =  [ NSString stringWithFormat:@"%@%@",  [ self.arrPercent objectAtIndex:row ] , @"%" ] ;
+        title = [ NSString stringWithFormat:@"%@%@",  [ self.arrPercent objectAtIndex:row ] , @"%" ] ;
     }
-    attString =  [ [ NSAttributedString alloc ] initWithString:title attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} ] ;
+    attString = [ [ NSAttributedString alloc ] initWithString:title attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} ] ;
     return attString;
 }
 
@@ -169,34 +176,34 @@
 {
     if ( component == 0 )
     {
-        self.people =  [ self.arrPeople objectAtIndex:row ] ;
+        self.people = [ self.arrPeople objectAtIndex:row ] ;
     }
     else
     {
-        self.percent =  [ self.arrPercent objectAtIndex:row ] ;
+        self.percent = [ self.arrPercent objectAtIndex:row ] ;
     }
     [ self updateSubTotal:-3 ] ;
 }
 
--  ( void )  updateSubTotal:  ( float )  value
+-  ( void ) updateSubTotal: ( float ) value
 {
     //NSString * strTotal = self.field_SubTotal.text.length > 0 ?  [ self.field_SubTotal.text stringByReplacingOccurrencesOfString:@"$ " withString:@"" ]  : NULL;
     NSString * strTotal = self.strSubTotal;
     
-    if  ( value == -1 )  {  // dot
+    if ( value == -1 ) {  // dot
         if  ( strTotal.length > 0 )  { self.strSubTotal =  [ NSString stringWithFormat:@"%@%@", strTotal, @"." ] ; }
     }
-    else if  ( value == -2 )  { // del
-        if  ( strTotal.length > 0 )  { self.strSubTotal =  [ strTotal substringToIndex: [ strTotal length ] -1 ] ; }
+    else if ( value == -2 ) { // del
+        if ( strTotal.length > 0 )  { self.strSubTotal =  [ strTotal substringToIndex: [ strTotal length ] -1 ] ; }
     }
-    else if  ( value == -3 )  {
+    else if ( value == -3 ) {
         NSLog ( @"No op!" ) ;
     }
     else {
-        if  ( strTotal.length == 0 && value != 0 )  {
+        if ( strTotal.length == 0 && value != 0 ) {
             self.strSubTotal =  [ NSString stringWithFormat:@"%d",  ( int ) value ] ;
         }
-        else if  ( strTotal.length == 0 && value == 0 )  {
+        else if  ( strTotal.length == 0 && value == 0 ) {
             self.strSubTotal = @"";
         }
         else {

@@ -7,18 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
+#import "mySettings.h"
+//#import <QuartzCore/QuartzCore.h>
 
-@interface ViewController : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate>
+@protocol ViewControllerDelegate <NSObject>
+@required
+- (void) getDefaults;
+- (void) updateSubTotal: ( float ) value;
+@end
+
+@interface ViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate> {
+    id <ViewControllerDelegate> delegate;
+}
+
+//@property (nonatomic,assign) id <ViewControllerDelegate> delegate;
+@property (retain) id delegate;
 
 @property (nonatomic,strong) NSUserDefaults *userDefaults;
 
-@property (nonatomic,strong) UIColor *BLUE;
+/*@property (nonatomic,strong) UIColor *BLUE;
 @property (nonatomic,strong) UIColor *GRAY;
 @property (nonatomic,strong) UIColor *RED;
 @property (nonatomic,strong) UIColor *BLACK;
 @property (nonatomic,strong) UIColor *LIGHTBLUE;
-@property (nonatomic,strong) UIColor *ORANGE;
+@property (nonatomic,strong) UIColor *ORANGE;*/
 
 @property (nonatomic,strong) NSArray *arrPercent;
 @property (nonatomic,strong) NSArray *arrPeople;
