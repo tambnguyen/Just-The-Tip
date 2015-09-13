@@ -9,15 +9,14 @@
 
 #import "ViewController.h"
 #import "mySettings.h"
-#import <QuartzCore/QuartzCore.h>
 
 @interface ViewController  (  ) 
-@property (assign) mySettings *settingsVC;
+@property (nonatomic, retain) mySettings *settingsVC;
 @end
 
 @implementation ViewController
 
-@synthesize delegate;
+//@synthesize delegate;
 
 -  ( void ) viewDidLoad {
     [ super viewDidLoad ] ;
@@ -25,13 +24,6 @@
     
     self.userDefaults =  [[NSUserDefaults alloc] initWithSuiteName:@"group.Just-The-Tip"] ;
     [ self getDefaults ] ;
-    
-    /*self.BLUE =  [ UIColor colorWithRed: ( 0 )  green: ( 122/255.0 )  blue: ( 1 )  alpha:1 ] ;
-    self.GRAY =  [ UIColor colorWithRed: ( 142/255.0 )  green: ( 142/255.0 )  blue: ( 147/255.0 )  alpha:1 ] ;
-    self.RED =  [ UIColor colorWithRed: ( 1 )  green: ( 59/255.0 )  blue: ( 48/255.0 )  alpha:1 ] ;
-    self.BLACK =  [ UIColor colorWithRed: ( 0 )  green: ( 0 )  blue: ( 0 )  alpha:1 ] ;
-    self.LIGHTBLUE =  [ UIColor colorWithRed: ( 90/255 )  green: ( 200/255 )  blue: ( 250/255 )  alpha:1 ] ;
-    self.ORANGE =  [ UIColor colorWithRed: ( 1 )  green: ( 149/255 )  blue: ( 0 )  alpha:1 ] ;*/
     
     self.arrPercent = @ [ @"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30",@"31",@"32",@"33",@"34",@"35",@"36",@"37",@"38",@"39",@"40",@"41",@"42",@"43",@"44",@"45",@"46",@"47",@"48",@"49",@"50" ] ;
     self.arrPeople = @ [ @"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20" ] ;
@@ -61,11 +53,11 @@
     self.field_SubTotal.rightView = paddingView;
     self.field_SubTotal.rightViewMode = UITextFieldViewModeAlways;
     
-    //[ self.field_SubTotal becomeFirstResponder ];
+    [ self.field_SubTotal becomeFirstResponder ];
     
-    //self.settingsVC = [[mySettings alloc] init];
-    //mySettings *settingsVC = self.childViewControllers[0];
+    self.settingsVC = [[mySettings alloc] init];
     self.settingsVC.delegate = self ;
+    //self.delegate = self;
 
     [ self animate ] ;
 }
@@ -264,54 +256,6 @@
         self.label_Tip.text = @"Tip";
         self.label_Total.text = @"Total";
     }
-}
-
--  ( IBAction ) touchDown_b0: ( id ) sender {
-    [ self updateSubTotal:0.0 ] ;
-}
-
--  ( IBAction ) touchDown_b1: ( id ) sender {
-    [ self updateSubTotal:1.0 ] ;
-}
-
--  ( IBAction ) touchDown_b2: ( id ) sender {
-    [ self updateSubTotal:2.0 ] ;
-}
-
--  ( IBAction ) touchDown_b3: ( id ) sender {
-    [ self updateSubTotal:3.0 ] ;
-}
-
--  ( IBAction ) touchDown_b4: ( id ) sender {
-    [ self updateSubTotal:4.0 ] ;
-}
-
--  ( IBAction ) touchDown_b5: ( id ) sender {
-    [ self updateSubTotal:5.0 ] ;
-}
-
--  ( IBAction ) touchDown_b6: ( id ) sender {
-    [ self updateSubTotal:6.0 ] ;
-}
-
--  ( IBAction ) touchDown_b7: ( id ) sender {
-    [ self updateSubTotal:7.0 ] ;
-}
-
--  ( IBAction ) touchDown_b8: ( id ) sender {
-    [ self updateSubTotal:8.0 ] ;
-}
-
--  ( IBAction ) touchDown_b9: ( id ) sender {
-    [ self updateSubTotal:9.0 ] ;
-}
-
--  ( IBAction ) touchDown_dot: ( id ) sender {
-    [ self updateSubTotal:-1 ] ;
-}
-
--  ( IBAction ) touchDown_del: ( id ) sender {
-    [ self updateSubTotal:-2 ] ;
 }
 
 -  ( IBAction ) up_RoundTip: ( id ) sender {

@@ -11,6 +11,7 @@
 		2302D1061B01A71A00314F05 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2302D1051B01A71A00314F05 /* TodayViewController.m */; };
 		2302D1081B01A71A00314F05 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2302D1071B01A71A00314F05 /* MainInterface.storyboard */; };
 		2302D10B1B01A71A00314F05 /* myWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2302D0FD1B01A71A00314F05 /* myWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2305C1C11BA6325600480B21 /* ViewControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2305C1C01BA6325600480B21 /* ViewControllerDelegate.m */; settings = {ASSET_TAGS = (); }; };
 		234DC8A91AFBF05A006A498A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 234DC8A81AFBF05A006A498A /* main.m */; };
 		234DC8AC1AFBF05A006A498A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 234DC8AB1AFBF05A006A498A /* AppDelegate.m */; };
 		234DC8AF1AFBF05A006A498A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 234DC8AE1AFBF05A006A498A /* ViewController.m */; };
@@ -60,6 +61,8 @@
 		2302D1041B01A71A00314F05 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		2302D1051B01A71A00314F05 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		2302D1071B01A71A00314F05 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		2305C1BF1BA6325600480B21 /* ViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerDelegate.h; sourceTree = "<group>"; };
+		2305C1C01BA6325600480B21 /* ViewControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerDelegate.m; sourceTree = "<group>"; };
 		2321BBEF1B01C041006CA483 /* myWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = myWidget.entitlements; sourceTree = "<group>"; };
 		234DC8A31AFBF05A006A498A /* Just The Tip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Just The Tip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		234DC8A71AFBF05A006A498A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -160,11 +163,13 @@
 			children = (
 				2375C6341B1027A800C00086 /* TesseractOCR */,
 				23B5CEB81B002F1600DCB927 /* Just The Tip.entitlements */,
+				234DC8B01AFBF05A006A498A /* Main.storyboard */,
 				234DC8AA1AFBF05A006A498A /* AppDelegate.h */,
 				234DC8AB1AFBF05A006A498A /* AppDelegate.m */,
 				234DC8AD1AFBF05A006A498A /* ViewController.h */,
 				234DC8AE1AFBF05A006A498A /* ViewController.m */,
-				234DC8B01AFBF05A006A498A /* Main.storyboard */,
+				2305C1BF1BA6325600480B21 /* ViewControllerDelegate.h */,
+				2305C1C01BA6325600480B21 /* ViewControllerDelegate.m */,
 				23B0FA921AFE8DC600B07044 /* mySettings.h */,
 				23B0FA931AFE8DC600B07044 /* mySettings.m */,
 				234DC8B31AFBF05A006A498A /* Images.xcassets */,
@@ -359,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				234DC8AF1AFBF05A006A498A /* ViewController.m in Sources */,
+				2305C1C11BA6325600480B21 /* ViewControllerDelegate.m in Sources */,
 				234DC8AC1AFBF05A006A498A /* AppDelegate.m in Sources */,
 				234DC8A91AFBF05A006A498A /* main.m in Sources */,
 				23B0FA941AFE8DC600B07044 /* mySettings.m in Sources */,

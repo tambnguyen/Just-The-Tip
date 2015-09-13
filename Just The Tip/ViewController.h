@@ -8,47 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "mySettings.h"
-//#import <QuartzCore/QuartzCore.h>
+#import "ViewControllerDelegate.h"
 
-@protocol ViewControllerDelegate <NSObject>
-@required
-- (void) getDefaults;
-- (void) updateSubTotal: ( float ) value;
-@end
-
-@interface ViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate> {
-    id <ViewControllerDelegate> delegate;
+@interface ViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, ViewControllerDelegate> {
 }
-
-//@property (nonatomic,assign) id <ViewControllerDelegate> delegate;
-@property (retain) id delegate;
 
 @property (nonatomic,strong) NSUserDefaults *userDefaults;
 
-/*@property (nonatomic,strong) UIColor *BLUE;
-@property (nonatomic,strong) UIColor *GRAY;
-@property (nonatomic,strong) UIColor *RED;
-@property (nonatomic,strong) UIColor *BLACK;
-@property (nonatomic,strong) UIColor *LIGHTBLUE;
-@property (nonatomic,strong) UIColor *ORANGE;*/
-
 @property (nonatomic,strong) NSArray *arrPercent;
 @property (nonatomic,strong) NSArray *arrPeople;
-
-@property (nonatomic,strong) NSArray *arrButtons;
-
-@property (strong, nonatomic) IBOutlet UIButton *numButton1;
-@property (strong, nonatomic) IBOutlet UIButton *numButton2;
-@property (strong, nonatomic) IBOutlet UIButton *numButton3;
-@property (strong, nonatomic) IBOutlet UIButton *numButton4;
-@property (strong, nonatomic) IBOutlet UIButton *numButton5;
-@property (strong, nonatomic) IBOutlet UIButton *numButton6;
-@property (strong, nonatomic) IBOutlet UIButton *numButton7;
-@property (strong, nonatomic) IBOutlet UIButton *numButton8;
-@property (strong, nonatomic) IBOutlet UIButton *numButton9;
-@property (strong, nonatomic) IBOutlet UIButton *numButton0;
-@property (strong, nonatomic) IBOutlet UIButton *numButtonDot;
-@property (strong, nonatomic) IBOutlet UIButton *buttonDel;
 
 @property (strong, nonatomic) IBOutlet UIPickerView *myPicker;
 
@@ -77,19 +45,6 @@
 @property (assign) BOOL bDefaultRoundTip;
 @property (assign) BOOL bDefaultRoundTotal;
 @property (assign) BOOL bDefaultDontRound;
-
-- (IBAction)touchDown_b0:(id)sender;
-- (IBAction)touchDown_b1:(id)sender;
-- (IBAction)touchDown_b2:(id)sender;
-- (IBAction)touchDown_b3:(id)sender;
-- (IBAction)touchDown_b4:(id)sender;
-- (IBAction)touchDown_b5:(id)sender;
-- (IBAction)touchDown_b6:(id)sender;
-- (IBAction)touchDown_b7:(id)sender;
-- (IBAction)touchDown_b8:(id)sender;
-- (IBAction)touchDown_b9:(id)sender;
-- (IBAction)touchDown_dot:(id)sender;
-- (IBAction)touchDown_del:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UITextField *field_SubTotal;
 @property (strong, nonatomic) IBOutlet UITextField *field_Total;

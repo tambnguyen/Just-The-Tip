@@ -8,14 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
+#import "ViewControllerDelegate.h"
+
 
 @interface mySettings : UIViewController {
     //id <ViewControllerDelegate> delegate;
 }
 
-//@property (nonatomic, assign) id <ViewControllerDelegate> delegate;
-@property (nonatomic, assign) id delegate;
+@property (nonatomic, assign) id <ViewControllerDelegate> delegate;
+//@property (weak, nonatomic) id<ViewControllerDelegate> delegate;
+//@property (nonatomic, assign) id delegate;
 //@property (retain) id delegate;
+//@property (nonatomic, assign) id delegate;
 
 @property (nonatomic,strong) NSUserDefaults *userDefaults;
 
