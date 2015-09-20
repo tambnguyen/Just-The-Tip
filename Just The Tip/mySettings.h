@@ -7,19 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ViewController.h"
-#import "ViewControllerDelegate.h"
+
+@protocol MySettingsViewControllerDelegate <NSObject>
+@required
+- (void) getDefaults;
+- (void) updateSubTotal: ( float ) value;
+@end
 
 
 @interface mySettings : UIViewController {
-    //id <ViewControllerDelegate> delegate;
+
 }
 
-@property (nonatomic, assign) id <ViewControllerDelegate> delegate;
-//@property (weak, nonatomic) id<ViewControllerDelegate> delegate;
-//@property (nonatomic, assign) id delegate;
-//@property (retain) id delegate;
-//@property (nonatomic, assign) id delegate;
+@property (nonatomic, assign) id delegate;
 
 @property (nonatomic,strong) NSUserDefaults *userDefaults;
 

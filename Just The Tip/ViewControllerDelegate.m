@@ -8,6 +8,6 @@
 
 #import "ViewControllerDelegate.h"
 
-@implementation ViewControllerDelegate
+//@implementation ViewControllerDelegate
 
-@end
+//@end

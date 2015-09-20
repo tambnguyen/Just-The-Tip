@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "mySettings.h"
-#import "ViewControllerDelegate.h"
 
-@interface ViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, ViewControllerDelegate> {
+@interface ViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, MySettingsViewControllerDelegate> {
 }
 
 @property (nonatomic,strong) NSUserDefaults *userDefaults;

@@ -11,12 +11,10 @@
 #import "mySettings.h"
 
 @interface ViewController  (  ) 
-@property (nonatomic, retain) mySettings *settingsVC;
+@property (nonatomic, strong) mySettings *settingsVC;
 @end
 
 @implementation ViewController
-
-//@synthesize delegate;
 
 -  ( void ) viewDidLoad {
     [ super viewDidLoad ] ;
@@ -57,10 +55,15 @@
     
     self.settingsVC = [[mySettings alloc] init];
     self.settingsVC.delegate = self ;
-    //self.delegate = self;
 
     [ self animate ] ;
 }
+/*
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"SegueRegistrationUserAction"]) {
+        [(mySettings *)segue.destinationViewController setDelegate:self];
+    }
+}*/
 
 - (IBAction)doneClicked:(id)sender
 {

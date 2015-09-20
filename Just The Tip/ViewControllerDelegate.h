@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@protocol ViewControllerDelegate <NSObject>
+@protocol MySettingsViewControllerDelegate <NSObject>
 @required
 - (void) getDefaults;
 - (void) updateSubTotal: ( float ) value;
 @end
 
-@interface ViewControllerDelegate : NSObject
+@interface MySettingsViewControllerDelegate : NSObject
 
 @end

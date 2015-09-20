@@ -15,13 +15,10 @@
 
 @implementation mySettings
 
-@synthesize delegate;
-
 -  ( void ) viewDidLoad {
      [ super viewDidLoad ] ;
     // Do any additional setup after loading the view.
     
-    //self.userDefaults =  [ NSUserDefaults standardUserDefaults ] ;
     self.userDefaults =  [[NSUserDefaults alloc] initWithSuiteName:@"group.Just-The-Tip"] ;
     
     [ self getDefaults ] ;
@@ -40,9 +37,13 @@
     self.textDefaultTax.inputAccessoryView = keyboardDoneButtonView;
     // END ENABLE DONE BUTTON FOR NUMPAD
     
-    
-    
     [ self animate ] ;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"SegueRegistrationUserAction"]) {
+        [(mySettings *)segue.destinationViewController setDelegate:self];
+    }
 }
 
 - (IBAction)doneClicked:(id)sender
@@ -146,8 +147,18 @@
 - (IBAction)up_default_exclude_tax:(id)sender {
     self.bExcludeTax = self.switchExcludeTax.isOn;
     [ self setDefaults ] ;
-    [ self.delegate getDefaults ];
-    [ self.delegate updateSubTotal:-3 ];
+    
+    NSLog(@"Action taken");
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(getDefaults)]) {
+        NSLog(@"Calling getDefaults");
+        [self.delegate getDefaults];
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(updateSubTotal:)]) {
+        NSLog(@"Calling updateSubTotal:");
+        [self.delegate updateSubTotal:-3];
+    }
 }
 
 -  ( IBAction ) up_default_tax: ( id ) sender {
