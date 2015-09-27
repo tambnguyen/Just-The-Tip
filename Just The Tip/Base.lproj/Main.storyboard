@@ -177,9 +177,6 @@
                                 <variation key="heightClass=compact-widthClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="735" y="223" width="51" height="31"/>
                                 </variation>
-                                <connections>
-                                    <action selector="up_default_dontround:" destination="dl1-vP-xzk" eventType="valueChanged" id="gpC-kj-VNc"/>
-                                </connections>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

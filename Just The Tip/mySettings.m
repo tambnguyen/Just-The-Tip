@@ -40,12 +40,6 @@
     [ self animate ] ;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"SegueRegistrationUserAction"]) {
-        [(mySettings *)segue.destinationViewController setDelegate:self];
-    }
-}
-
 - (IBAction)doneClicked:(id)sender
 {
     [self.view endEditing:YES];
@@ -119,6 +113,14 @@
 
     [ self setDefaults ] ;
     [ self animate ] ;
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(getDefaults)]) {
+        [self.delegate getDefaults];
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(updateSubTotal:)]) {
+        [self.delegate updateSubTotal:-3];
+    }
 }
 
 -  ( IBAction ) up_default_roundtotal: ( id ) sender {
@@ -128,15 +130,14 @@
 
     [ self setDefaults ] ;
     [ self animate ] ;
-}
-
--  ( IBAction ) up_default_dontround: ( id ) sender {
-    self.bDefaultDontRound = self.switchDefaultRoundTotal.isOn;
-    self.bDefaultRoundTip = FALSE;
-    self.bDefaultRoundTotal = !self.switchDefaultRoundTotal.isOn;
     
-    [ self setDefaults ] ;
-    [ self animate ] ;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(getDefaults)]) {
+        [self.delegate getDefaults];
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(updateSubTotal:)]) {
+        [self.delegate updateSubTotal:-3];
+    }
 }
 
 -  ( IBAction ) up_default_remember_last_bill: ( id ) sender {
@@ -148,15 +149,11 @@
     self.bExcludeTax = self.switchExcludeTax.isOn;
     [ self setDefaults ] ;
     
-    NSLog(@"Action taken");
-    
     if (self.delegate && [self.delegate respondsToSelector:@selector(getDefaults)]) {
-        NSLog(@"Calling getDefaults");
         [self.delegate getDefaults];
     }
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(updateSubTotal:)]) {
-        NSLog(@"Calling updateSubTotal:");
         [self.delegate updateSubTotal:-3];
     }
 }

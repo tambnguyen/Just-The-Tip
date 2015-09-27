@@ -46,7 +46,6 @@
 - (IBAction)up_default_tip:(id)sender;
 - (IBAction)up_default_roundtip:(id)sender;
 - (IBAction)up_default_roundtotal:(id)sender;
-- (IBAction)up_default_dontround:(id)sender;
 - (IBAction)up_default_remember_last_bill:(id)sender;
 - (IBAction)up_default_exclude_tax:(id)sender;
 

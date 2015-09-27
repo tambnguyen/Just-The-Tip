@@ -65,6 +65,11 @@
     }
 }*/
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    self.settingsVC = (mySettings *)segue.destinationViewController;
+    self.settingsVC.delegate = self;
+}
+
 - (IBAction)doneClicked:(id)sender
 {
     [self.view endEditing:YES];
